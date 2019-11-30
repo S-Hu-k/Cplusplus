@@ -1,24 +1,78 @@
 #include<iostream>
 using namespace std;
-//常方法的const怎么 了
-//getdate与getdate()const 能否共存
-//拷贝构造函数的const 加与不加有啥区别
-
 #include<iostream>
-
 #include<stdio.h>
-
 //#include"fun.h"
-
 using namespace std;
+//构造 构造拷贝  拷贝 析构 
+class String
+{
+public:
+	//String(const char *str = NULL);//空指针
+	String(const char *str = "")//字符串
+	{
 
+	}
+private:
+	char *m_data;
+};
+void main()
+{
+	[]
+}
+/*
+class Test
+{
+public:
+	Test()
+	{
+		m_data = 0;
+	}
+private:
+	int m_data;
+};
+void main()
+{
+	Test t;
+	Test t1 = t;
+
+}
+
+*/
+
+
+//1.自我赋值检测
+//2.释放当前对象空间
+//3.重新开辟空间并赋值
+//4返回当前对象
+
+
+
+
+
+//Test& operator=(const Test &t)  可以连等
 // 1 常方法的const 怎么了
-// 2 GetData() 与 GetData()const 能否共存
+//int GetData(Test *const this) const
+//int GetData(const Test *const this) 
+//常成员函数表示成员函数隐含传入的this指针为const指针，决定了在该成员函数中，
+//任意修改它所在的类的成员的操作都是不允许的（因为隐含了对this指针的const引用），唯一的例外是对于mutable修饰的成员。
+// 2 GetData() 与 GetData()const 能否共存   可以共存
+//const int getData()
+//函数的返回值被const修饰，不能作为左值。
+//对于内置类型，返回值，这么使用好像没什么意义。
+//因为返回的是临时变量，临时变量已经是const
+//如果返回一个类对象的引用，加const可以确保，返回值不会被直接操作。
+//int getData() const
+//该函数是类的const成员函数
+//即该函数不会修改类的数据成员
+//当定义一个const对象时，只能调用const成员函数，
+//以保证类的数据成员不会改变。
 // 3 拷贝构造函数的const 
+//若拷贝构造函数不加const，编译器会先调用Fun1(）返回一个临时对象，然后用该临时对象初始化test
 // 4 赋值语句 
 //   Test& operator=(const Test &t
 //   void  operator=(Test t)
-
+/*
 class Test
 {
 public:
@@ -49,6 +103,7 @@ public:
 	return *this;
 	}
 	*/
+/*
 	void operator=(Test t)
 	{
 		cout << "Assign," << this << "=" << &t << endl;
@@ -74,6 +129,7 @@ public:
 	return m_data
 	}
 	*/
+/*
 private:
 	int m_data;
 };
