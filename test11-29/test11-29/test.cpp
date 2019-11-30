@@ -5,6 +5,7 @@ using namespace std;
 //#include"fun.h"
 using namespace std;
 //构造 构造拷贝  拷贝 析构 
+/*
 class String
 {
 public:
