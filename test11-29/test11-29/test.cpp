@@ -1,9 +1,375 @@
 #include<iostream>
 using namespace std;
-#include<iostream>
-#include<stdio.h>
+class Date
+{
+public:
+	Date* operator&()
+	{
+		return this;
+	}
+	const Date* operator&()const
+	{
+		return this;
+	}
+private:
+	int _year; // 年
+	int _month; // 月
+	int _day; // 日
+};
+void main()
+{
+	Date d;
+	d.operator&();
+
+
+
+}
+
+
+
+
+
+
+
+/*
+class Date
+{
+public:
+	void Display()
+	{
+		cout << "Display ()" << endl;
+		cout << "year:" << _year << endl;
+		cout << "month:" << _month << endl;
+		cout << "day:" << _day << endl << endl;
+		//请思考下面的几个问题：
+			//1. const对象可以调用非const成员函数吗？
+			//2. 非const对象可以调用const成员函数吗？
+			//3. const成员函数内可以调用其它的非const成员函数吗？
+			//4. 非const成员函数内可以调用其它的const成员函数吗？
+			//8.取地址及const取地址操作符重载
+			//这两个默认成员函数一般不用重新定义 ，编译器默认会生成。
+	}
+	void Display() const
+	{
+		cout << "Display () const" << endl;
+		cout << "year:" << _year << endl;
+		cout << "month:" << _month << endl;
+		cout << "day:" << _day << endl << endl;
+	}
+private:
+	int _year; // 年
+	int _month; // 月
+	int _day; // 日
+};
+void main()
+{
+	Date d1;
+	d1.Display();
+	const Date d2;
+	d2.Display();
+}
+/*
+class Date
+{
+public:
+	Date(int year = 1900, int month = 1, int day = 1)
+	{
+		_year = year;
+		_month = month;
+		_day = day;
+	}
+	Date(const Date& d)
+	{
+		_year = d._year;
+		_month = d._month;
+		_day = d._day;
+	}
+	Date& operator=(const Date& d)
+	{
+		if (this != &d)
+		{
+			_year = d._year;
+			_month = d._month;
+			_day = d._day;
+			cout << "Assign," << this << "=" << &d<< endl;
+		}
+	}
+private:
+	int _year;
+	int _month;
+	int _day;
+};
+void main()
+{
+	Date d1;
+	Date d2 ( d1);
+}
+/*
+////////////////////////////////////////////////
+#include<assert.h>
+class String
+{
+public:
+	String(const char* str = "jack")
+	{
+		_str = (char*)malloc(strlen(str) + 1);
+		strcpy(_str, str);
+	}
+	~String()
+	{
+		cout << "~String()" << endl;
+		free(_str);
+	}
+private:
+	char* _str;
+};
+int main()
+{
+	String s1("hello");
+	String s2(s1);
+}
+/////////////////////////////////////////////////////
+/*
+class Date
+{
+public:
+	Date(int year = 1900, int month = 1, int day = 1)
+	{
+		_year = year;
+		_month = month;
+		_day = day;
+	}
+	Date(const Date &d)
+	{
+		_year = d._year;
+		_month = d._month;
+		_day = d._day;
+
+	}
+private:
+	int _year;
+	int _month;
+	int _day;
+};
+int main()
+{
+	Date d1;
+	// 这里d2调用的默认拷贝构造完成拷贝，d2和d1的值也是一样的。
+	cout<<"Date d2(d1)"<<endl;
+}
+/*
+class Date
+	//拷贝函数得传值 不传值会造成死循环
+{
+public:
+	Date(int year = 1900, int month = 1, int day = 1)
+	{
+		_year = year;
+		_month = month;
+		_day = day;
+	}
+	Date( const Date &d)
+	{
+		_year = d._year;
+		_month = d._month;
+		_day = d._day;
+		//3.若未显示定义，系统生成默认的拷贝构造函数。 默认的拷贝构造函数对象按内存存储按字节序完成拷
+			//贝，这种拷贝我们叫做浅拷贝，或者值拷贝。
+			
+	}
+private:
+	int _year;
+	int _month;
+	int _day;
+};
+int main()
+{
+	Date d1;
+	Date d2(d1);
+	
+}
+/*
+class String
+{
+public:
+	String(const char* str = "jack")
+	{
+		_str = (char*)malloc(strlen(str) + 1);
+		strcpy(_str, str);
+	}
+	~String()
+	{
+		cout << "~String()"<<this << endl;
+		free(_str);
+	}
+private:
+	char* _str;
+};
+class Person
+{
+private:
+	String _name;
+	int _age;
+};
+int main()
+{
+	Person p;
+	return 0;
+}
+/*
+typedef int DataType;
+
+class SeqList
+{
+public:
+	SeqList(int capacity = 10)
+	{
+		_pData = (DataType*)malloc(capacity * sizeof(DataType));
+		assert(_pData);
+		_size = 0;
+		_capacity = capacity;
+	}
+	//关于编译器自动生成的析构函数，是否会完成一些事情呢？下面的程序我们会看到，编译器生成的
+		//默认析构函数，对会自定类型成员调用它的析构函数。
+		~SeqList()
+	{
+			if (_pData)
+			{
+				free(_pData); // 释放堆上的空间
+				_pData = NULL; // 将指针置为空
+				_capacity = 0;
+				_size = 0;
+			}
+		}
+private:
+	int* _pData;
+	size_t _size;
+	size_t _capacity;
+};
+/*
+class Time
+{
+public:
+	Time()
+	{
+		cout << "Time()" << endl;
+		_hour = 0;
+		_minute = 0;
+		_second = 0;
+	}
+private:
+	int _hour;
+	int _minute;
+	int _second;
+};
+class Date
+{
+private:
+	// 基本类型(内置类型)
+	int _year;
+	int _month;
+	int _day;
+	// 自定义类型
+	Time _t;
+};
+int main()
+{
+	Date d;
+	return 0;
+}
+
+/*
+class Date
+{
+public:
+	//Date()
+	//{
+	//	_year = 1900;
+	//	_month = 1;
+	//	_day = 1;
+	//}
+	Date(int year = 1900, int month = 1, int day = 1)
+	{
+		_year = year;
+		_month = month;
+		_day = day;
+	}
+private:
+	int _year;
+	int _month;
+	int _day;
+};
+
+void main()
+{
+	Date d;
+}
+
+/*class Date
+{
+private:
+	int _year;
+	int _month;
+	int _day;
+};
+void main()
+{
+	Date d2;
+}
+
+/*
+class Date
+{
+public:
+	//1.无参构造函数
+	Date()
+	{}
+	//2.带参构造函数
+	Date(int year, int mouth, int day)
+	{
+		_year = year;
+		_mouth = mouth;
+		_day = day;
+	}
+private:
+	int _year;
+	int _mouth;
+	int _day;
+
+};
+void main()
+{
+	Date d1;
+	Date d2(2015, 5, 4);
+	Date d3();
+}
+/*
+class Date
+{
+	//构造函数主要是为了初始化对象。
+public:
+	void SetDate(int year, int mouth, int day)
+	{
+		_year = year;
+		_mouth = mouth;
+		_day = day;
+	}
+	void Display()
+	{
+		cout << _year << "-" << _mouth << "-" << _day << endl;
+	}
+private:
+	int _year;
+	int _mouth;
+	int _day;
+};
+int main()
+{
+	Date d1, d2;
+	d1.SetDate(2016, 5, 56);
+	d1.Display();
+}
 //#include"fun.h"
-using namespace std;
 //构造 构造拷贝  拷贝 析构 
 /*
 class String
@@ -39,7 +405,7 @@ void main()
 
 }
 
-*/
+
 
 
 //1.自我赋值检测
@@ -103,7 +469,7 @@ public:
 	}
 	return *this;
 	}
-	*/
+	
 /*
 	void operator=(Test t)
 	{
@@ -129,7 +495,7 @@ public:
 	{
 	return m_data
 	}
-	*/
+	
 /*
 private:
 	int m_data;
@@ -296,4 +662,5 @@ void main()
 {
 	student s;//实例化对象
 	
-}*/
+}
+*/
