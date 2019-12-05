@@ -1,10 +1,68 @@
 #include<iostream>
 using namespace std;
 
+
+
+
 class Int
 {
 	//friend ostream& operator<<(ostream& out, const Complex& c)
-	friend  void Print (const Int& c);
+	//friend  void Print (const Int& c);
+	friend ostream& operator<<(ostream& out, const Int& x);
+	friend istream& operator>>(istream& in, Int& x);
+public:
+	Int(int i = 0) : m_i(i)
+	{}
+	~Int()
+	{}
+public:
+	int Getvalue()const
+	{
+		return m_i;
+	}
+public:
+	bool operator==(const Int& x);
+	bool operator!=(const Int & x);
+	bool operator>(const Int & x);
+	bool operator<=(const Int & x);
+	bool operator<(const Int & x);
+	bool operator>=(const Int & x);
+
+private:
+	int m_i;
+};
+ostream& operator<<(ostream& out, const Int& x)
+{
+	out << x.m_i;
+	return out;
+}
+istream& operator>>(istream& in, Int& x)
+{
+	in >> x.m_i;
+	return in;
+
+}
+void main()
+{
+	Int i = 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+class Int
+{
+	//friend ostream& operator<<(ostream& out, const Complex& c)
+	//friend  void Print (const Int& c);
 	friend ostream& operator<<(ostream& out, const Int& x);
 	friend istream& operator>>(istream& in, Int& x);
 public:
@@ -73,9 +131,9 @@ public:
 	}
 	Int operator++(int)
 	{
-		/*Int tmp(m_i);
-		m_i++;
-		return tmp;*/
+		//Int tmp(m_i);
+		//m_i++;
+		//return tmp;
 		Int tmp(*this);
 		++* this;
 		return tmp;
@@ -91,6 +149,14 @@ public:
 		m_i--;
 		return tmp;
 	}
+//public:
+//	bool operator==(const Int& x);
+//	bool operator!=(const Int & x);
+//	bool operator>(const Int & x);
+//	bool operator<=(const Int & x);
+//	bool operator<(const Int & x);
+//	bool operator>=(const Int & x);
+
 private:
 	int m_i;
 };
@@ -99,6 +165,8 @@ ostream& operator<<(ostream& out, const Int& x)
 	out << x.m_i;
 	return out;
 }
+
+
 istream& operator>>(istream& in, Int& x)
 {
 	in >> x.m_i;
@@ -109,7 +177,6 @@ void main()
 {
 	Int i = 0;
 	Int v = i++;
-
 
 	cout << "v=" << v << endl;
 	cout << "i=" << i << endl;
