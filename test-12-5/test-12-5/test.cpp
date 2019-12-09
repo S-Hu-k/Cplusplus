@@ -169,6 +169,7 @@ int Test::m_count = 0;
 ostream& operator<<(ostream& out, const Test& t)
 {
 	out << t.m_data;
+
 	return out;
 }
 
@@ -193,6 +194,7 @@ explicit Test(int data=0):m_data(data) /   /只能用在构造函数中
 	}
 	Test& operator=(const Test& t)
 	{
+
 		if (this != &t)
 		{
 			m_data = t.m_data;
@@ -204,6 +206,7 @@ explicit Test(int data=0):m_data(data) /   /只能用在构造函数中
 public://让对象强转
 	operator int ()
 	{
+
 		return m_data;
 	}
 private:
@@ -218,6 +221,7 @@ ostream& operator<<(ostream& out, const Test& t)
 void main()
 {
 	Test t;
+
 	cout << "t=" << t << endl;
 	t =(Test)100;
 	cout << "t=" << t << endl;
@@ -232,6 +236,7 @@ void main()
 class Test
 {
 public:
+
 	Test(int value,int count,int data):m_value(value),m_count(count),m_data(data)
 	{}
 	~Test()
@@ -243,11 +248,13 @@ private:
 
 };
 void main()
+
 {
 	Test t(0, 0, 00);
 }
 /*
 class Base
+
 {
 public:
 	Base(int x,int y):a(x),b(y)
@@ -276,6 +283,7 @@ void main()
 }
 
 
+
 /*
 void main()
 {
@@ -292,13 +300,16 @@ class Int
 
 	//friend ostream& operator<<(ostream& out, const Complex& c)
 
+
 	//friend  void Print (const Int& c);
 
 	friend ostream& operator<<(ostream& out, const Int& x);
 
 	friend istream& operator>>(istream& in, Int& x);
 
+
 public:
+
 
 	Int(int i = 0) : m_i(i)
 
