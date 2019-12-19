@@ -10,6 +10,7 @@ class Date
 	Date(const Date& d);
 		Date& operator=(const Date& d);
 		Date operator+(int days);
+
 		Date operator-(int days);
 		int operator-(const Date& d);
 		Date& operator++();
