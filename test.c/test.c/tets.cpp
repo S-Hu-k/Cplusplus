@@ -2,6 +2,25 @@
 using namespace std;
 
 /*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void main()
 {
     int* p1 = new int[10];//中括号用数组的方式申请
