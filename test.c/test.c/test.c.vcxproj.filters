@@ -18,5 +18,11 @@
     <ClCompile Include="tets.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="a.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="b.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
