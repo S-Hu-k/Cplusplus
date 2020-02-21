@@ -4,8 +4,32 @@
 #include<assert.h>
 using namespace std;
 
+void main()
+{
+    vector<int> v;
+    for (int i = 0; i < 10; ++i)
+    {
+        v.push_back(i);
+    }
+
+ // vector<int>::iterator it = v.begin();
+    auto it=v.begin();
+    while (it != v.end())
+    {
+        cout << *it << " ";
+        ++it;
+    }
+    cout << endl;
+    v.pop_back();
+    for (auto& e : v)
+        cout << e << " ";
+    cout << endl;
+
+}
 
 
+//vector 没有头插是因为效率  STL 以效率著称
+/*
 void main()
 {
     vector<int> v;
