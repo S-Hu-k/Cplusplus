@@ -7,7 +7,8 @@ using namespace std;
 
 namespace bit
 {
-	template<typename T>
+	template<class T>
+	//template<typename T>
 
 	class vector
 	{
