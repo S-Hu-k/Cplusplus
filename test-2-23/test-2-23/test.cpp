@@ -64,7 +64,7 @@ namespace bit
 		}
 	};
 };
-void main()
+int main()
 {
 	bit::vector<int> v;
 	cout << "size=" << v.size() << endl;
