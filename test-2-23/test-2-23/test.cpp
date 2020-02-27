@@ -63,6 +63,7 @@ namespace bit
 			}
 		}
 	};
+
 };
 int main()
 {
