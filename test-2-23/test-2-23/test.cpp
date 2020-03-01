@@ -67,6 +67,24 @@ namespace Cool
 				end_of_storage = start + n;
 			}
 		}
+		void resize(size_t n, const T& value = T())
+		{
+			if (n <=size())
+			{
+				finish = start + n;
+				return;
+			}
+			if (n > capacity())
+				reserve(n * 2);
+			iterator p = finish;
+			finish = start + n;
+			while (p != finish)
+			{
+				*p = value;
+				p++;
+			}
+
+		}
 	private:
 		iterator start;
 		iterator finish;
@@ -74,6 +92,23 @@ namespace Cool
 	};
 
 };
+int main()
+{
+	Cool::vector<int> v;
+	cout << "size=" << v.size() << endl;
+	cout << "capacity=" << v.capacity() << endl;
+	v.reserve(10);
+	cout << "size=" << v.size() << endl;
+	cout << "capacity=" << v.capacity() << endl;
+	v.resize(5, 6);
+	cout << "size=" << v.size() << endl;
+	cout << "capacity=" << v.capacity() << endl;
+	for (auto& e : v)
+		cout << e << " ";
+	cout << endl;
+
+}
+/*
 int main()
 {
 	Cool::vector<int> v;
