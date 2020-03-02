@@ -20,6 +20,12 @@ namespace Cool
 			, finish(nullptr)
 			, end_of_storage(nullptr)
 		{}
+		vector(size_t n, const T &value = T())
+			:start(nullptr), finish(nullptr), end_of_storage(nullptr)
+		{
+			while(n--!=0)
+				push_back(value);
+		}
 		~vector()
 		{
 			delete[]start;
@@ -69,7 +75,7 @@ namespace Cool
 		}
 		void resize(size_t n, const T& value = T())
 		{
-			if (n <=size())
+			if (n <= size())
 			{
 				finish = start + n;
 				return;
@@ -83,8 +89,34 @@ namespace Cool
 				*p = value;
 				p++;
 			}
-
 		}
+	public:
+		iterator insert(iterator pos, const T& x)
+		{
+			if (finish >= end_of_storage)
+			{
+				size_t oldpos = pos - start;
+				size_t new_cpy = capacity * 2 + 1;
+				reserve(new_cpy);
+
+				pos = start + oldpos;
+			}
+			iterator p = finish;
+			while (p != pos)
+			{
+				*p = *(p - 1);
+				p--;
+			}
+			*p = x;
+			finish++;
+			return pos;
+		}
+	public:
+		void push_back(const T &x)
+		{
+			 insert(end(), x);
+		}
+
 	private:
 		iterator start;
 		iterator finish;
@@ -92,6 +124,17 @@ namespace Cool
 	};
 
 };
+int main()
+{
+	Cool::vector<int> v(10, 2);
+	cout << "size=" << v.size() << endl;
+	cout << "capacity=" << v.capacity() << endl;
+	for (auto& e : v)
+		cout << e << " ";
+	cout << endl;
+
+}
+/*
 int main()
 {
 	Cool::vector<int> v;
