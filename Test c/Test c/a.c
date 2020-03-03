@@ -1,6 +1,267 @@
 #define _CRT_SECURE_NO_WARNINGS 1
-1 #include<stdio.h>
+#include <stdio.h>
+void main(void)
+{
+    printf("%s,%5.3s", "computer", "computer");
+    return 0;
+}
+/*
 
+#include <malloc.h>
+#include <string.h>
+struct Student
+{
+    char xuehao[100];
+    char name[100];
+    char sex[100];
+    int age;
+    float score;
+
+};
+int n;
+void menu()
+{
+    printf("*************************************************\n");
+    printf("*************    1.创建数据         *************\n");
+    printf("*************    2.添加数据         *************\n");
+    printf("*************    3.删除数据         *************\n");
+    printf("*************    4.查找数据         *************\n");
+    printf("*************    5.按成绩进行排序   *************\n");
+    printf("*************    6.退出             *************\n");
+    printf("*************************************************\n");
+    printf("请选择:>");
+    scanf("%d", n);
+}
+void scanfstudent(struct Student* p, int len)//输入学生的信息 学号 姓名 性别 年龄 得分
+{
+    int i;
+    for (i = 0; i < len; i++)
+    {
+        printf("请输入第%d学生的信息:\n", i + 1);
+        printf("学号:");
+        scanf("%s", p[i].xuehao);
+        printf("姓名:");
+        scanf("%s", p[i].name);
+        printf("性别:");
+        scanf("%s", p[i].sex);
+        printf("年龄:");
+        scanf("%d", &p[i].age);
+        printf("得分:");
+        scanf("%f", &p[i].score);
+        printf("\n");
+    }
+
+}
+
+void printfstudent(struct Student* p, int len)//对学生的信息进行输出
+{
+    int i;
+    printf("学号\t\t姓名\t\t性别\t\t年龄\t\t分数\n\n");
+
+    for (i = 0; i < len; i++)
+    {
+        printf("%s\t\t", p[i].xuehao);
+        printf("%s\t\t", p[i].name);
+        printf("%s\t\t", p[i].sex);
+        printf("%d\t\t", p[i].age);
+        printf("%.2f\n", p[i].score);
+
+    }
+}
+void createdata(struct Student* p, int* len)
+{
+    int n;
+
+    printf("请输入要创建数组的长度：");
+    scanf("%d", &n);
+    scanfstudent(p, n);
+    *len = n;
+    printfstudent(p, *len);
+
+}
+void add(struct Student* p, int* len)//增加一个学生的信息。并且按照顺序排列
+{
+    // int i,j;
+
+    //int pos = 0;
+    int c = 1;
+    while (c == 1)
+    {
+        int mylen = *len;
+        struct Student st;
+        printf("请输入要添加学生的信息:\n");
+        printf("学号:");
+        scanf("%s", st.xuehao);
+        printf("姓名:");
+        scanf("%s", st.name);
+        printf("性别:");
+        scanf("%s", st.sex);
+        printf("年龄:");
+        scanf("%d", &st.age);
+        printf("得分:");
+        scanf("%f", &st.score);
+        printf("\n");
+
+        p[mylen] = st;
+        *len = mylen + 1;
+        printfstudent(p, *len);
+        printf("\n");
+        printf("是否继续添加？输入:\n1.继续\n2.退出\n");
+        scanf("%d", &c);
+    }
+}
+void Sort(struct Student* p, int len)//按照分数从大到小排列选择排序法
+{
+    struct Student st;
+    int i, j;
+    for (i = 0; i < len - 1; i++)
+    {
+        for (j = i + 1; j < len; j++)
+            if (p[i].score < p[j].score)
+            {
+                st = p[i];
+                p[i] = p[j];
+                p[j] = st;
+
+            }
+    }
+    printfstudent(p, len);
+}
+
+void del(struct Student* p, int* len)//删除学生的信息
+{
+    int i, j;
+    char p1[1024];
+    int c = 1;
+    while (c == 1)
+    {
+        int mylen = *len;
+        printf("请输入要删除学生的学号:");
+        scanf("%s", p1);
+        for (i = 0; i < *len; i++)
+        {
+            if (strcmp(p[i].xuehao, p1) == 0)
+                break;
+        }
+        if (i == 0)//删除的是第一个元素
+        {
+            for (j = 0; j < (*len) - 1; j++)
+                p[j] = p[j + 1];
+        }
+        else if (i > 0 && i < (*len) - 1)//删除中间的元素
+        {
+
+            for (j = i; j < (*len) - 1; j++)
+                p[j] = p[j + 1];
+
+        }
+        else if (i == (*len) - 1)
+            ;
+        else
+            printf("error,学号输入有误!\n");
+        *len = mylen - 1;//数组长度减少一个
+        printfstudent(p, *len);
+        printf("\n");
+        printf("是否继续删除？输入:\n1.继续\n2.退出\n");
+        scanf("%d", &c);
+    }
+}
+
+void serch(struct Student* p, int len)//按学号或者姓名查找学生信息
+{
+
+    int i, j;
+    int flat = 0;
+    char num[100];
+    char name1[100];
+    printf("请输入1或2,1按学号查找,2按姓名查找:");
+    scanf("%d", &i);
+
+    if (i == 1)
+    {
+        printf("请输入要查找的学号:");
+        scanf("%s", num);
+        for (j = 0; j < len; j++)
+        {
+            if (strcmp(p[j].xuehao, num) == 0)
+
+            {
+                flat++;
+
+                break;
+            }
+
+        }
+        if (!flat)
+        {
+            printf("学号输入有误!\n");
+        }
+        else
+        {
+            printf("学号:%s,姓名:%s,性别:%s,年龄:%d,得分:%.2f\n", p[j].xuehao, p[j].name, p[j].sex, p[j].age, p[j].score);
+        }
+    }
+    else if (i == 2)
+    {
+        flat = 0;
+        printf("请输入要查找的姓名:");
+        scanf("%s", name1);
+        for (j = 0; j < len; j++)
+        {
+            if (strcmp(p[j].name, name1) == 0)
+            {
+                flat++;
+                printf("学号:%s,姓名:%s,性别:%s,年龄:%d,得分:%.2f\n", p[j].xuehao, p[j].name, p[j].sex, p[j].age, p[j].score);
+                break;
+            }
+
+        }
+        if (!flat)
+        {
+            printf("姓名输入有误!\n");
+        }
+    }
+}
+
+int main(void)
+{
+    int n;
+    struct Student p[1024];
+    int len = 0;
+    while (1)
+    {
+        menu(&n);
+        switch (n)
+        {
+        case 1:createdata(p, &len); break;
+        case 2:add(p, &len); break;
+        case 3:del(p, &len); break;
+        case 4:serch(p, len); break;
+        case 5:Sort(p, len); break;
+        case 6:printf("谢谢您的使用!\n\n"); break;
+        default:printf("输入有误重新输入!\n\n"); break;
+        }
+        if (n == 6)
+            break;
+    }
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 2 #include<windows.h>
 
 3 #include<stdlib.h>
@@ -2211,7 +2472,7 @@
          }
 
 
-
+     */
 
 /*
 #include <stdio.h>
