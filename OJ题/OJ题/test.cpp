@@ -1,4 +1,108 @@
 
+
+
+
+
+
+//进制转换--给定一个十进制数M，以及需要转换的进制数N。将十进制数M转化为N进制数
+
+/*
+#include<iostream>
+using namespace std;
+int main()
+{
+    //s表示通过进制转换后M的N进制数
+    string s = "";
+    string tables = "0123456789ABCDEF";//从二进制到十六进制的数的集合
+    //输入某个数M，和需要转换的进制N
+    int M = 0;
+    int N = 0;
+    cin >> M >> N;
+    if (M == 0)
+    {
+        s = "0";
+    }
+    while (M)
+    {
+        if (M < 0)
+        {
+            M = -M;
+            cout << "-";
+        }
+        s = tables[M % N] + s;
+        M /= N;
+    }
+    //注意：因为s是字符串，最好在输出的时候将该字符串以C风格显示出来即就是s.c_str(),
+    //某些编译器可以跑过，但有的编译器就必须加上
+    cout << s.c_str() << endl;
+    return 0;
+}
+
+
+
+
+
+
+/*
+#include<iostream>
+using namespace std;
+int main()
+{
+    int a = 0;
+    int b = 0;
+    int c = 0;
+    cin >> a;
+    cin >> b;
+    cin >> c;
+    cout << a << endl;
+    cout << b << endl;
+    cout << c << endl;
+}
+
+
+
+/*
+#include<iostream>
+using namespace std;
+class a {
+public:
+    a(char* s)
+    {
+        cout << s << endl;
+    }
+    ~a() {}
+};
+class b :virtual public a
+{
+public:
+    b(char* s1, char* s2) :a(s1) {
+        cout << s2 << endl;
+    }
+};
+class c :virtual public a
+{
+public:
+    c(char* s1, char* s2) :a(s1) {
+        cout << s2 << endl;
+    }
+};
+class d :public b, public c
+{
+public:
+    d(char* s1, char* s2, char* s3, char* s4) :b(s1, s2), c(s1, s3), a(s1)
+    {
+        cout << s4 << endl;
+    }
+};
+int main()
+{
+    d *p = new d("class a", "class b", "class c", "class d");
+    delete p;
+    return 0;
+}
+
+
+
 //数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。例如输入一个长度为9的数组{ 1,2,3,2,2,2,5,4,2 }。
 //由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0。
 
@@ -19,14 +123,6 @@ public:
             return 0;
     }
 };
-
-
-
-
-
-
-
-
 
 
 
@@ -56,8 +152,6 @@ int MoreThanHalfNum_Solution()
     }
 
 };
-
-
 
 
 
@@ -95,10 +189,6 @@ for (int i = 0; i < len; i++) {
 	if (count > (len / 2)) {
 		return array[i];
  */
-
-
-
-
 
 
 /*
@@ -148,7 +238,6 @@ int main()
     cout << (func());
 }
 
-
 //在未排序的数组中找到第 k 个最大的元素。
 //请注意，你需要找的是数组排序后的第 k 个最大的元素，而不是第 k 个不同的元素。
 /*
@@ -160,8 +249,6 @@ public:
         return nums[k - 1];
     }
 };
-
-
 
 
 //将一句话的单词进行倒置  标点符号不倒置
@@ -196,7 +283,6 @@ int main()
         }
     }
     cout << s << endl;
-
 }
 
 
