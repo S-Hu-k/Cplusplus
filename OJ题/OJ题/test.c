@@ -2,6 +2,14 @@
 #include<stdio.h>
 int main()
 {
+	char p1[15] = "abcd", * p2 = "ABCD", str[50] = "xyz";
+	strcpy(str + 2, strcat(p1 + 2, p2 + 1));
+	printf("%s", str);
+}
+/*
+#include<stdio.h>
+int main()
+{
 	int a, b, c = 0;
 	scanf_s("%d %d %d", &a, &b, &c);
 	printf("%d %d %d", a, b, c);

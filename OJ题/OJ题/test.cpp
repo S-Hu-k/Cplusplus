@@ -1,5 +1,80 @@
-
-
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+    string str1, str2;
+    //str1.size()计算出有多少种插法
+    int len = str1.size() + str2.size() / 2;
+    
+    string str3 = str1;
+    int* pc;
+    for (int i = 0; i < str1.size(); ++i)
+    {
+        //str1.size()+str2.size()/2找出中间元素 定义两个指针 分别向前向后查找
+        int* p1, * p2;
+        int count = 0;
+        str1.insert(pc, str2);
+        while (len--)
+        {
+            if (str1[p1] == str1[p2])
+            {
+                p1--;
+                p2++;
+            }
+        }
+        pc++;
+        count++;
+    }
+    cout << count << endl;
+}
+/*
+#include<iostream>
+using namespace std;
+void main()
+{
+    int n[][3] = { 10,20,30,40,50,60 };
+    int(*p)[3];
+    p = n;
+    cout << p[0][0] << "," << *(p[0] + 1) << "," << (*p)[2] << endl;
+}
+/*
+#include<iostream>
+using namespace std;
+class b0
+{
+public:
+    virtual void display()
+    {
+        cout << "bo::display0" << endl;
+    }
+};
+class b1 :public b0
+{
+public:
+    void display()
+    {
+        cout << "b1::display0" << endl;
+    }
+};
+class d1 :public b1
+{
+public:
+    void display() { cout << "d1::display0" << endl;}
+};
+void fun(b0 ptr)
+{
+    ptr.display();
+}
+int main()
+{
+    b0 B0;
+    b1 B1;
+    d1 D1;
+    fun(B0);
+    fun(B1);
+    fun(D1);
+}
 
 
 
