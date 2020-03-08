@@ -2,6 +2,21 @@
 #include<stdio.h>
 int main()
 {
+	char a = 0, ch;
+	while ((ch = getchar()) != '\n')
+	{
+		if (a % 2 != 0 && (ch >= 'a' && ch <= 'z'))
+			ch = ch - 'a' + 'A';
+		a++;
+		putchar(ch);
+	}
+	printf("\n");
+}
+
+/*
+#include<stdio.h>
+int main()
+{
 	char p1[15] = "abcd", * p2 = "ABCD", str[50] = "xyz";
 	strcpy(str + 2, strcat(p1 + 2, p2 + 1));
 	printf("%s", str);
