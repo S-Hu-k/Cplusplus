@@ -1,3 +1,16 @@
+
+
+#include<stdio.h>
+void main()
+{
+	//int a = 1, b = 0, c = -1, d = 0;
+	//d = ++a || ++b && ++c;
+	//printf("%d", d);
+	//return;
+	int p[][4] = { {1},{3,2},{4,5,6},{0} };
+	printf("%d", p[1][2]);
+}
+
 /*
 #include<stdio.h>
 int main()
