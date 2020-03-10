@@ -1,5 +1,41 @@
+//求两个数的最小公倍数和最大公约数
+/*
+#include <stdio.h>
+#define MAX(a,b) (a>b)?a:b
+#define MIN(a,b) (a<b)?a:b
+int main()
+{
+	int a, b;
+	int yu;
+	int m, n;
+	printf("input two numbers:\n");
+	scanf_s("%d,%d", &m, &n);
+	a = MAX(m, n);
+	b = MIN(m, n);
+	while (a % b != 0)
+	{
+		yu = a % b;
+		a = b;
+		b = yu;
+	}
+	printf("最大公约数为：%d\n", b);
+	printf("最小公倍数为:%d", m * n / b);
+	return 0;
+}
 
+/*
+#include<stdio.h>
+void main()
+{
+	
 
+	int a[4] = { 1,2,3,4 };
+	int* ptr = (int*)(&a + 1);
+	printf("%d", *(ptr - 1));
+}
+*/
+
+/*
 #include<stdio.h>
 void main()
 {

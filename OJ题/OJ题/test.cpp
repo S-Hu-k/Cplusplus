@@ -1,5 +1,139 @@
 /*
 #include<iostream>
+#include<vector>
+#include<string>
+#include<algorithm>
+using namespace std;
+//判断一个字符串数组中的字符串是不是按照字典排序的
+bool is_dict_rank(vector<string>& vec)
+{
+    for (int i = 0; i < vec.size() - 1; i++)
+    {
+        if (vec[i] > vec[i + 1])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+//判断一个字符串数组中的字符串是不是按照长度排序
+bool is_len_rank(vector<string>& vec)
+{
+    for (int i = 0; i < vec.size() - 1; i++)
+    {
+        if (vec[i].size() > vec[i + 1].size())
+        {
+            return false;
+        }
+    }	return true;
+}
+int main()
+{
+    int n;
+    cin >> n;//输入几个字符串 
+    vector<string> v;
+    v.resize(n+1); 	//将字符串输入到字符串数组v中	
+    for (int i = 0; i < n; i++)
+    {
+        cin.get();//取走缓冲区中的\n符	
+        getline(cin, v[i]);
+    }
+    if (is_dict_rank(v) && !is_len_rank(v))
+    {
+        cout << "lexicographically" << endl;
+    }
+    else if (!is_dict_rank(v) && is_len_rank(v))
+    {
+        cout << "lengths" << endl;
+    }
+    else if (is_dict_rank(v) && is_len_rank(v))
+    {
+        cout << "both" << endl;
+    }
+    else if (!is_dict_rank(v) && !is_len_rank(v))
+    {
+        cout << "none" << endl;
+    }
+    return 0;
+}
+
+
+
+/*
+#include<iostream>
+#include<string>
+using namespace std;
+void main()
+{
+    char array[] = "abcdefghijklmnopqrstuvwxyz";
+    string str;
+    int n = 0;
+    cin >> n;
+    for (int i = 0; i < n; ++i)
+    {
+        cin >> str;
+    }
+
+}
+
+
+
+
+
+/*
+#include<iostream>
+using namespace std;
+class cla {
+    static int n;
+public:
+    cla() { n++; }
+    ~cla() { n--; }
+    static int get_n() { return n; }
+};
+int cla::n = 0;
+int main()
+
+{
+    cla* p = new cla;
+    delete p;
+    cout << "n=" << cla::get_n() << endl;
+    return 0;
+}
+
+
+/*
+#include<iostream>
+using namespace std;
+class a
+{
+public:
+    a() :m_ival(0) { test(); }
+    virtual void func() { std::cout << m_ival << ' '; }
+    void test() { func(); }
+public:
+    int m_ival;
+};
+class b :public a
+{
+public:
+    b() { test(); }
+    virtual void func()
+    {
+        ++m_ival;
+        std::cout << m_ival << ' ';
+    }
+};
+int main(int argc, char* argv[])
+{
+    a* p = new b;
+    p->test();
+    return 0;
+}
+
+
+
+/*
+#include<iostream>
 using namespace std;
 int main()
 {
