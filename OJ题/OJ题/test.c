@@ -1,3 +1,31 @@
+/*
+#include<stdio.h>
+int fun(int a)
+{
+	a ^= (1 << 5) - 1;
+	return a;
+}
+
+int main()
+{
+	printf("%d", fun(21));
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //求两个数的最小公倍数和最大公约数
 /*
 #include <stdio.h>
