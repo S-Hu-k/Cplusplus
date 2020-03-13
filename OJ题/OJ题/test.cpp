@@ -1,3 +1,23 @@
+
+#include<iostream>
+using namespace std;
+struct a
+{
+    void foo() { printf("foo"); }
+    virtual void bar(){ printf("bar"); }
+    a() { bar(); }
+};
+struct b :a {
+    void foo() { printf("b-foo"); }
+    void bar() { printf("b-bar"); }
+};
+void main()
+{
+    a* p = new b;
+    p->foo();
+    p->bar();
+}
+/*
 #include<iostream>
 using namespace std;
 int fun(int n, int m)

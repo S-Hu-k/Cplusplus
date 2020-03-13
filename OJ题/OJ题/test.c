@@ -1,3 +1,29 @@
+
+/*
+#include<stdio.h>
+int func(int x) {
+	int count = 0;
+	while (x)
+	{
+		count++;
+		x = x & (x - 1);
+	}return count;
+}
+int main()
+{
+	printf("%d ", func(9999));
+	return 0;
+}
+/*
+#include<stdio.h>
+int main()
+{
+	int i = 1;
+	if (i <= 0)
+		printf("****\n");
+	else
+		printf("%%%%\n");
+}
 /*
 #include<stdio.h>
 int fun(int a)
@@ -11,18 +37,6 @@ int main()
 	printf("%d", fun(21));
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
