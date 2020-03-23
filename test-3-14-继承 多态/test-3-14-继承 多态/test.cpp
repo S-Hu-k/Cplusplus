@@ -1,5 +1,88 @@
 #include<iostream>
 using namespace std;
+class Base
+{
+public:
+	Base()
+	{
+		++m_count;
+	}
+	~Base()
+	{
+		--m_count;
+	}
+public:
+	int GetCount()const
+	{
+		return m_count;
+	}
+public:
+	void Increment()
+	{
+		m_count++;
+	}
+private:
+	static int m_count; //用于统计对象的个数
+};
+int Base::m_count = 0;
+class D : public Base
+{
+public:
+	D()
+	{}
+public:
+
+};
+void main()
+{
+	D d;
+	cout<<"object count = "<<d.GetCount()<<endl;
+	{
+		D d1;
+		cout<<"object count = "<<d.GetCount()<<endl;
+	}
+	cout<<"object count = "<<d.GetCount()<<endl;
+}
+/*void main()
+{
+	cout << sizeof(Base) << endl;
+	cout << sizeof(D) << endl;   //1  //1  默认值
+	D d; //开辟空间 1   8
+}
+
+
+/*
+class Base
+{
+public:
+	Base()
+	{};
+public:
+	int Getcount()
+	{
+		return ++count;
+	}
+private:
+	static int count;
+};
+int Base::count = 0;
+class D :public Base
+{
+	D()
+	{};
+public:
+	int getcount()const
+	{
+		return Base::Getcount();
+	}
+};
+int main()
+{
+	D d;
+	cout << "count =" << d.getcount << endl;
+
+}
+/*
 //#define DISPLAY
 class D;
 class Base
@@ -28,7 +111,7 @@ private:
 };
 class D :public Base//默认为私有继承
 {
-	//friend void PrintData(const Base& b, const D& d);
+	friend void PrintData(const Base& b, const D& d);
 #ifdef DISPLAY
 public:
 	D()
@@ -60,7 +143,7 @@ void main()
 	Base b;
 	PrintData(b,d);
 
-}
+}*/
 /*
 class Person
 {
