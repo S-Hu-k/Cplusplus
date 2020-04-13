@@ -17,7 +17,6 @@ void Test_DirectionList()
 }
 void Test_Seqlite()
 {
-	
 		sqlite3* db;
 		char* zErrMsg = 0;
 		int rc;
@@ -35,6 +34,6 @@ void Test_Seqlite()
 }
 int main(int argc, char* argv[])
 {
-	Test_DirectionList();
+	//Test_DirectionList();
 	return 0;
 }

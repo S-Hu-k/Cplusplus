@@ -145,7 +145,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DocFastSearchTool.cpp" />
-    <ClCompile Include="sqlite3.c" />
     <ClCompile Include="Sysutil.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
