@@ -21,7 +21,7 @@
     <ClInclude Include="sysutil.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="sqlite3.h">
+    <ClInclude Include="sqlite\sqlite3.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

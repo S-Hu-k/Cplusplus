@@ -38,7 +38,8 @@
 ** Make sure we can call this stuff from C++.
 */
 #ifdef __cplusplus
-extern "C" {
+extern "C" 
+{
 #endif
 
 
