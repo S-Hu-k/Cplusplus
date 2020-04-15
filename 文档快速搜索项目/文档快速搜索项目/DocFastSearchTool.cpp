@@ -38,7 +38,7 @@ void Test_Seqlite()
 	//string sql = "insert into you_tb values(1, 'abc', 'c:\\')";
 	string sql = "select id, name, path from my_tb where id=2";
 	//rc = sqlite3_exec(db, sql.c_str(), 0, 0, &zErrMsg);
-	rc = sqlite3_exec(db, sql.c_str(), callback, (void*)data, &zErrMsg);
+	//rc = sqlite3_exec(db, sql.c_str(), callback, (void*)data, &zErrMsg);
 	if (rc != SQLITE_OK)
 	{
 		fprintf(stderr, "SQL error: %s\n", zErrMsg);
