@@ -1,8 +1,8 @@
 #include"DataManager.h"
+#include"sysutil.h"
 
 SqliteManager::SqliteManager():m_db(nullptr)
-{
-}
+{}
 SqliteManager::~SqliteManager()
 {
 	Close();
@@ -45,14 +45,14 @@ void SqliteManager::ExecuteSql(const string sql)
 	int rc = sqlite3_exec(m_db, sql.c_str(), 0, 0, &zErrMsg);
 	if (rc != SQLITE_OK)
 	{
-		fprintf(stderr, "SQL(%s) error: %s\n", sql.c_str(),zErrMsg);
-		//ERROR_LOG("SQL(%s) error: %s", sql.c_str(), zErrMsg);
+		//fprintf(stderr, "SQL(%s) error: %s\n", sql.c_str(),zErrMsg);
+		ERROR_LOG("SQL(%s) error: %s", sql.c_str(), zErrMsg);
 		sqlite3_free(zErrMsg);
 	}
 	else
 	{
-		fprintf(stdout, "SQL(%s) Execute successfully.\n", sql.c_str());
-		//TRACE_LOG("SQL(%s) Execute successfully.", sql.c_str());
+		//fprintf(stdout, "SQL(%s) Execute successfully.\n", sql.c_str());
+		TRACE_LOG("SQL(%s) Execute successfully.", sql.c_str());
 	}
 
 }
@@ -66,7 +66,8 @@ void SqliteManager::GetResultTable(const string sql,int &row,int &col,char **&pp
 	}
 	else
 	{
-		fprintf(stdout, "GetResult successfully.\n", zErrMsg);
+		//fprintf(stdout, "GetResult successfully.\n", zErrMsg);
+		fprintf(stdout, "Get Result Table successfully.\n", zErrMsg);
 
 	}
 

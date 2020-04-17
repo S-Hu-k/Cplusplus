@@ -1,8 +1,10 @@
+
 #include"common.h"
 #include"sysutil.h"
 #include"./sqlite/sqlite3.h"
 #include"DataManager.h"
-#include"ScanManager.h"
+#pragma comment(lib,"./sqlite/sqlite3.lib")
+//#include"ScanManager.h"
 
 
 
@@ -79,75 +81,29 @@ void Test_SqliteManager()
 	sqlite3_free_table(ppRet);
 }
 
-void Test_Log()
+
+
+void  Test_Log()
 {
-	FILE* fp = fopen("Test.txt", "r");
+	FILE* fp = fopen("Test.txt", "w");
 	if (fp == NULL)
 	{
-		TRACE_LOG("Open File Error.");
+		//printf("file=%s\n", __FILE__);
+		TRACE_LOG("Open file error.");
 		return;
 	}
 	else
-		TRACE_LOG("Open File Success.");
+		TRACE_LOG("Open file success.");
 
 	fclose(fp);
-}
-void Test_Set()
-{
-	//单重集合
-	vector<int> v = { 5,8,9,3,5,5,5,5,5,5,7,6,2,1,0 };
 
-	multiset<int> s;
-	//set<int> s;
-	for (const auto& e : v)
-		s.insert(e);
-
-	auto it = s.begin();
-	while (it != s.end())
-	{
-		cout << *it << " ";
-		++it;
-	}
-	cout << endl;
-}
-
-void Test_Map()
-{
-	//映射
-	pair<int, string> p1 = { 1, "abc" };
-	pair<int, string> p2 = { 5, "xyz" };
-	pair<int, string> p3 = { 3, "lmn" };
-	pair<int, string> p4 = { 2, "opq" };
-	pair<int, string> p5 = { 9, "hjk" };
-	pair<int, string> p6 = { 7, "rty" };
-
-	//cout<<p1.first<<" : "<<p1.second<<endl;
-	map<int, string> mp;
-	mp.insert(p1);
-	mp.insert(p2);
-	mp.insert(p3);
-	mp.insert(p4);
-	mp.insert(p5);
-	mp.insert(p6);
-
-	for (const auto& e : mp)
-		cout << e.first << " : " << e.second << endl;
-
-}
-
-
-void Test_Scan()
-{
-	const string& path = "C:\\Users\\baoso\\Desktop\\Pro_81\\my_dir";
-	ScanManager sm;
-	sm.ScanDirectory(path);
 }
 int main(int argc, char* argv[])
 {
 	//Test_DirectionList();
 	//Test_Sqlite();
-	//Test_SqliteManager();
-	Test_Log();
+	Test_SqliteManager();
+	//Test_Log();
 	//Test_Set();
 	//Test_Map();
 	//Test_Scan();

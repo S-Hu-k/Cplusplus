@@ -1,3 +1,4 @@
+
 #pragma once
 
 #include"common.h"
@@ -15,4 +16,12 @@ public:
 
 private:
 	sqlite3 *m_db;
+};
+
+
+//////////////////////////////////////////////////////////////////
+class DataManager
+{
+private:
+	SqliteManager m_dbmgr;
 };
