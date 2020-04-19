@@ -98,12 +98,25 @@ void  Test_Log()
 	fclose(fp);
 
 }
+
+void Test_Set()
+{
+	vector<int> v = { 4,2,6,8,9,1,3,0 };
+	set<int> s;
+	for (auto& e : v)
+		s.insert(e);
+
+	for (auto& e : s)
+		cout << e << " ";
+	cout << endl;
+
+}
 int main(int argc, char* argv[])
 {
 	//Test_DirectionList();
 	//Test_Sqlite();
-	Test_SqliteManager();
-	//Test_Log();
+	//Test_SqliteManager();
+	Test_Log();
 	//Test_Set();
 	//Test_Map();
 	//Test_Scan();
