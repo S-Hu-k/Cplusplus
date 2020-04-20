@@ -16,6 +16,8 @@ public:
 
 private:
 	sqlite3 *m_db;
+
+
 };
 
 

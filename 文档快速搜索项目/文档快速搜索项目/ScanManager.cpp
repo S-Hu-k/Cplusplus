@@ -16,6 +16,8 @@ void ScanManager::ScanDirectory(const string& path)
     //2 扫描数据库文件系统
     set<string> db_set;
 
+
+
     //对比本地文件和数据库文件
 
     auto local_it = local_set.begin();

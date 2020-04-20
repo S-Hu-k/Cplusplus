@@ -83,6 +83,9 @@ void Test_SqliteManager()
 
 
 
+
+
+
 void  Test_Log()
 {
 	FILE* fp = fopen("Test.txt", "w");

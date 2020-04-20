@@ -57,6 +57,8 @@ inline static void __ErrorDebug(const char* filename, int line, const char* func
 
 	//输出用户打的trace信息
 	va_list args;
+
+
 	va_start(args, format);
 	vfprintf(stdout, format, args);
 	va_end(args);

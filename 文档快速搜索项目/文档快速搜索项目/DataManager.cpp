@@ -65,6 +65,9 @@ void SqliteManager::GetResultTable(const string sql,int &row,int &col,char **&pp
 		fprintf(stdout, "GetResult failed:%s\n", zErrMsg);
 	}
 	else
+
+
+
 	{
 		//fprintf(stdout, "GetResult successfully.\n", zErrMsg);
 		fprintf(stdout, "Get Result Table successfully.\n", zErrMsg);

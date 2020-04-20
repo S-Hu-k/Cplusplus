@@ -2,6 +2,8 @@
 #include"common.h"
 #include"DataManager.h"
 
+
+
 class ScanManager
 {
 public:

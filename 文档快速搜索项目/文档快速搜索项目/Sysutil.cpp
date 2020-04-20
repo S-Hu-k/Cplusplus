@@ -3,6 +3,8 @@
 void DirectionList(const string& path, vector<string>& subfile, vector<string>& subdir)
 {
 	string _path = path;
+
+
 	_path += "\\*.*";
 
 	_finddata_t file;
