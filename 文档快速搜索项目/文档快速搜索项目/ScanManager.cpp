@@ -22,4 +22,33 @@ void ScanManager::ScanDirectory(const string& path)
 
     auto local_it = local_set.begin();
     auto db_it = db_set.begin();
+
+    while (local_it != local_set.end() && db_it != db_set.end())
+    {
+        if (*local_it < *db_it)
+        {
+            //本地有 数据库没有   数据库要增加
+        }
+        else if (*local_it < *db_it)
+        {
+            //本地没有 数据库有   数据库要删除
+
+        }
+        else
+        {
+            //本地存在 数据库存在，数据库不需要改变
+        }
+    }
+    while (local_it!=local_set.end())   
+    {
+        //本地有 数据库没有   数据库要增加
+    }
+    while (db_it != db_set.end())
+    {
+        //本地没有 数据库有   数据库要删除
+
+    }
+
+    //递归遍历子目录
+
  }

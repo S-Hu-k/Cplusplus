@@ -113,15 +113,45 @@ void Test_Set()
 		cout << e << " ";
 	cout << endl;
 
+
+
+	auto it = s.begin();
+	while (it != s.end())
+	{
+		cout << *it << " ";
+	}
+	cout << endl;
+}
+
+void Test_Map()
+{
+	pair<int, string> p1 = { 1, "abc" };
+	pair<int, string> p2 = { 5, "xyz" };
+	pair<int, string> p3 = { 3, "lmn" };
+	pair<int, string> p4 = { 2, "opq" };
+	pair<int, string> p5 = { 9, "hjk" };
+	pair<int, string> p6 = { 7, "rty" };
+	//cout<<p1.first<<" : "<<p1.second<<endl;
+	map<int, string> mp;
+	mp.insert(p1);
+	mp.insert(p2);
+	mp.insert(p3);
+	mp.insert(p4);
+	mp.insert(p5);
+	mp.insert(p6);
+
+	for (const auto& e : mp)
+		cout << e.first << " : " << e.second << endl;
+
 }
 int main(int argc, char* argv[])
 {
 	//Test_DirectionList();
 	//Test_Sqlite();
 	//Test_SqliteManager();
-	Test_Log();
+	//Test_Log();
 	//Test_Set();
-	//Test_Map();
+	Test_Map();
 	//Test_Scan();
 	return 0;
 }
