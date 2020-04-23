@@ -1,5 +1,6 @@
 #include"DataManager.h"
 #include"sysutil.h"
+#include"ScanManager.h"
 
 SqliteManager::SqliteManager():m_db(nullptr)
 {}
@@ -73,5 +74,49 @@ void SqliteManager::GetResultTable(const string sql,int &row,int &col,char **&pp
 		fprintf(stdout, "Get Result Table successfully.\n", zErrMsg);
 
 	}
+
+}
+////////////////////////////////////////////////////////////////////////////
+DataManager::DataManager()
+{
+	m_dbmgr.Open(DOC_DB);
+}
+DataManager::~DataManager()
+{
+
+}
+void DataManager::InitSqlite()
+{
+	char sql[SQL_BUFFER_SIZE] = { 0 };
+	sprintf(sql, "create table if not exists %s(id integer primary key autoincrement, doc_name text, doc_path text, doc_pinyin text, doc_initials text)",
+		DOC_TABLE);
+	m_dbmgr.ExecuteSql(sql);
+}
+void DataManager::InsertDoc(const string& path, const string& doc)
+{
+	char sql[SQL_BUFFER_SIZE] = { 0 };
+	sprintf(sql, "insert into % s values(null, '%s', '%s', '%s', '%s')",
+		DOC_TABLE, doc.c_str(), path.c_str()); //, pinyin.c_str(), initials.c_str()
+	m_dbmgr.ExecuteSql(sql);
+}
+void DataManager::GetDocs(const string& path,  set<string>& docs)
+{
+	char sql[SQL_BUFFER_SIZE] = { 0 };
+	sprintf(sql, "select doc_name from %s where doc_path='%s'", DOC_TABLE, path.c_str());
+
+	int row = 0, col = 0;
+	char** ppRet = 0;
+	m_dbmgr.GetResultTable(sql, row, col, ppRet);
+	//AutoGetResultTable at(&m_dbmgr, sql, row, col, ppRet);
+
+	for (int i = 1; i <= row; ++i)
+		docs.insert(ppRet[i]);
+		
+	//释放结果表
+	sqlite3_free_table(ppRet);
+
+}
+void DataManager::DeleteDoc(const string& path, const string& docs)
+{
 
 }

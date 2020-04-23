@@ -8,6 +8,7 @@ class ScanManager
 {
 public:
 	void ScanDirectory(const string& path);
+	
 private:
 	DataManager m_db;
 };

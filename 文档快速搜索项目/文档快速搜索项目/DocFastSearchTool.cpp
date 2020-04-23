@@ -4,7 +4,7 @@
 #include"./sqlite/sqlite3.h"
 #include"DataManager.h"
 #pragma comment(lib,"./sqlite/sqlite3.lib")
-//#include"ScanManager.h"
+#include"ScanManager.h"
 
 
 
@@ -142,6 +142,13 @@ void Test_Map()
 
 	for (const auto& e : mp)
 		cout << e.first << " : " << e.second << endl;
+
+}
+void Test_Scan()
+{
+	const string& path = "C:\\Users\\baoso\\Desktop\\Pro_81\\my_dir";
+	ScanManager sm;
+	sm.ScanDirectory(path);
 
 }
 int main(int argc, char* argv[])
