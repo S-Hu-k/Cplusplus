@@ -14,10 +14,10 @@ void ScanManager::ScanDirectory(const string& path)
 
 
     //2 扫描数据库文件系统
-    set<string> db_set;
+    multiset<string> db_set;
     m_db.GetDocs(path, db_set);
 
-
+     
     //对比本地文件和数据库文件
 
     auto local_it = local_set.begin();
@@ -28,24 +28,35 @@ void ScanManager::ScanDirectory(const string& path)
         if (*local_it < *db_it)
         {
             //本地有 数据库没有   数据库要增加
+            m_db.InsertDoc(path, *local_it);
+            local_it++;
         }
         else if (*local_it < *db_it)
         {
             //本地没有 数据库有   数据库要删除
+            m_db.DeleteDoc(path, *db_it);
+            db_it++;
+
 
         }
         else
         {
             //本地存在 数据库存在，数据库不需要改变
+            local_it++;
+            db_it++;
         }
     }
     while (local_it!=local_set.end())   
     {
         //本地有 数据库没有   数据库要增加
+        m_db.InsertDoc(path, *local_it);
+        local_it++;
     }
     while (db_it != db_set.end())
     {
         //本地没有 数据库有   数据库要删除
+        m_db.DeleteDoc(path, *db_it);
+        db_it++;
 
     }
 

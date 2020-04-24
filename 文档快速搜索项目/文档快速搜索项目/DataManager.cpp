@@ -118,5 +118,7 @@ void DataManager::GetDocs(const string& path,  set<string>& docs)
 }
 void DataManager::DeleteDoc(const string& path, const string& docs)
 {
-
+	char sql[SQL_BUFFER_SIZE] = { 0 };
+	sprintf(sql, "delete from %s where doc_name='%s' and doc_path='%s'", DOC_TABLE, doc.c_str(), path.c_str());
+	m_dbmgr.ExecuteSql(sql);
 }
