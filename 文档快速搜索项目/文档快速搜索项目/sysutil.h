@@ -89,6 +89,54 @@ inline static void __ErrorDebug(const char* filename, int line, const char* func
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 #pragma once
 #include"common.h"
