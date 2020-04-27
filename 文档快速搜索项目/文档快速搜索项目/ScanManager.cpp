@@ -64,5 +64,10 @@ void ScanManager::ScanDirectory(const string& path)
     }
 
     //µİ¹é±éÀú×ÓÄ¿Â¼
-
+    for (const auto& dir : local_dirs)
+    {
+        string dir_path= path;
+        dir_path += "\\";
+        dir_path += dir;
+    }
  }

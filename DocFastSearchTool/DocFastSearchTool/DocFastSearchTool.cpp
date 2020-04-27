@@ -50,6 +50,8 @@ void Test_Sqlite()
 		}
 		cout << endl;
 	}
+
+
 	//cout<<endl;
 
 	sqlite3_free_table(result);
