@@ -115,9 +115,6 @@ void DataManager::GetDocs(const string& path,  set<string>& docs)
 	//释放结果表
 	sqlite3_free_table(ppRet);
 
-
-
-
 }
 void DataManager::DeleteDoc(const string& path, const string& docs)
 {
@@ -125,19 +122,21 @@ void DataManager::DeleteDoc(const string& path, const string& docs)
 	sprintf(sql, "delete from %s where doc_name='%s' and doc_path='%s'", DOC_TABLE, doc.c_str(), path.c_str());
 	m_dbmgr.ExecuteSql(sql);
 
+	/////////////////////////
+	//级联删除目录下的子文件
+	string doc_path = path;
+	doc_path += "\\";
+	doc_path += doc;
+	memset(sql, 0, SQL_BUFFER_SIZE);
+	sprintf(sql, "delete from %s where doc_path like '%s%%'", DOC_TABLE, doc_path.c_str());
+	m_dbmgr.ExecuteSql(sql);
+}
 
 
 
 
-
-
-
-
-
-
-
-
-
-
+/////////////////////////////////////////////////////////////////
+void Search(const string& key, vector<pair<string, string>>, &doc_path)
+{
 
 }

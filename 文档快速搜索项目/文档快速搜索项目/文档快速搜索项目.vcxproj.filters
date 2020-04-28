@@ -24,6 +24,9 @@
     <ClInclude Include="DataManager.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="common.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="ScanManager.h">
       <Filter>头文件</Filter>
     </ClInclude>

@@ -69,5 +69,6 @@ void ScanManager::ScanDirectory(const string& path)
         string dir_path= path;
         dir_path += "\\";
         dir_path += dir;
+        ScanDirectory(dir_path);
     }
  }
