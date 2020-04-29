@@ -37,7 +37,7 @@ public:
 	void GetDocs(const string& path, const set<string>& docs);
 	void DeleteDoc(const string& path, const string& doc);
 public:
-	void Search(const string& key, vector<pair<string, string>>, &doc_path);
+	void Search(const string& key, vector<pair<string, string>>&doc_path);
 private:
 	SqliteManager m_dbmgr;
 };

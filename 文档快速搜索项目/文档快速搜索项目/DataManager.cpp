@@ -136,7 +136,12 @@ void DataManager::DeleteDoc(const string& path, const string& docs)
 
 
 /////////////////////////////////////////////////////////////////
-void Search(const string& key, vector<pair<string, string>>, &doc_path)
+void DataManager::Search(const string& key, vector<pair<string, string>>&doc_path)
 {
+	char sql[SQL_BUFFER_SIZE] = { 0 };
+	sprintf(sql, "select doc_name,doc_path from %s where doc_name like '%%%s%%'", DOC_TABLE, key.c_str());
+	int row = 0, col = 0;
+	char** ppRet = nullptr;
+	m_dbmgr.GetResultTable();
 
 }
