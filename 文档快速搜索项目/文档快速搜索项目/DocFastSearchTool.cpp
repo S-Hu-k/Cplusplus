@@ -151,6 +151,38 @@ void Test_Scan()
 	sm.ScanDirectory(path);
 
 }
+
+void Test_Search()
+{
+	const string& path = "C:\\Users\\baoso\\Desktop\\Pro_81\\my_dir";
+
+	//创建扫描
+	ScanManager sm;
+	sm.ScanDirectory(path);
+
+	//创建搜索实例
+	DataManager dm;
+
+	string key;
+	vector<	pair<string, string>>doc_path;
+
+	while (1)
+	{
+		cout << "请输入要搜索的关键字:>";
+		cin >> key;
+		dm.Search(key,doc_path);
+
+		//显示结果
+		printf("%s %s\n", "名称", "路径");
+		for (const auto& e : doc_path)
+		{
+			printf("%s %s\n", e.first.c_str(), e.second.c_str());
+		}
+
+	}
+	dm.Search();
+
+}
 int main(int argc, char* argv[])
 {
 	//Test_DirectionList();

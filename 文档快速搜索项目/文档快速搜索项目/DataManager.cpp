@@ -77,6 +77,23 @@ void SqliteManager::GetResultTable(const string sql,int &row,int &col,char **&pp
 
 }
 ////////////////////////////////////////////////////////////////////////////
+AutoGetResultTabes::AutoGetResultTabes(SqliteManager* db, const string& sql, int& row, int& col, char**& ppRet):m_db(db)
+	{
+	m_db->GetResultTable(sql,row,col,ppRet);
+	m_ppRet = ppRet;
+
+}
+AutoGetResultTabes::~AutoGetResultTabes()
+{
+	if (m_ppRet)
+		sqlite3_free_table(m_ppRet);
+
+}
+
+
+
+
+////////////////////////////////////////////////////////////////////////////
 DataManager::DataManager()
 {
 	m_dbmgr.Open(DOC_DB);
@@ -106,15 +123,15 @@ void DataManager::GetDocs(const string& path,  set<string>& docs)
 
 	int row = 0, col = 0;
 	char** ppRet = 0;
-	m_dbmgr.GetResultTable(sql, row, col, ppRet);
-	//AutoGetResultTable at(&m_dbmgr, sql, row, col, ppRet);
+	//m_dbmgr.GetResultTable(sql, row, col, ppRet);
+	AutoGetResultTable at(&m_dbmgr, sql, row, col, ppRet);
 
 	for (int i = 1; i <= row; ++i)
 		docs.insert(ppRet[i]);
 		
 	//释放结果表
-	sqlite3_free_table(ppRet);
-
+	//sqlite3_free_table(ppRet); 
+	//m_dbmgr.FreeResultTable(ppRet);
 }
 void DataManager::DeleteDoc(const string& path, const string& docs)
 {
@@ -142,6 +159,14 @@ void DataManager::Search(const string& key, vector<pair<string, string>>&doc_pat
 	sprintf(sql, "select doc_name,doc_path from %s where doc_name like '%%%s%%'", DOC_TABLE, key.c_str());
 	int row = 0, col = 0;
 	char** ppRet = nullptr;
-	m_dbmgr.GetResultTable();
+	//m_dbmgr.GetResultTable(sql,row,col,ppRet);
+	AutoGetResultTabes at(&m_dbmgr,sql,row,col,ppRet);
+
+	doc_path.clear();
+
+	for (int i = 1; i < row; ++i)
+		doc_path.push_back(ppRet[i * col], ppRet[i * col + 1]);
+
+	//sqlite3_free_table(ppRet);
 
 }
