@@ -123,15 +123,15 @@ void DataManager::GetDocs(const string& path,  set<string>& docs)
 
 	int row = 0, col = 0;
 	char** ppRet = 0;
-	//m_dbmgr.GetResultTable(sql, row, col, ppRet);
-	AutoGetResultTable at(&m_dbmgr, sql, row, col, ppRet);
+	m_dbmgr.GetResultTable(sql, row, col, ppRet);
+	//AutoGetResultTable at(&m_dbmgr, sql, row, col, ppRet);
 
 	for (int i = 1; i <= row; ++i)
 		docs.insert(ppRet[i]);
 		
 	//释放结果表
 	//sqlite3_free_table(ppRet); 
-	//m_dbmgr.FreeResultTable(ppRet);
+	m_dbmgr.FreeResultTable(ppRet);
 }
 void DataManager::DeleteDoc(const string& path, const string& docs)
 {
