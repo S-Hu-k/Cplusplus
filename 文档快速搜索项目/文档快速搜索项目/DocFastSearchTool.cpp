@@ -170,7 +170,7 @@ void Test_Search()
 	{
 		cout << "请输入要搜索的关键字:>";
 		cin >> key;
-		dm.Search(key,doc_path);
+		dm.Search(key, doc_path);
 
 		//显示结果
 		printf("%s %s\n", "名称", "路径");
@@ -180,8 +180,39 @@ void Test_Search()
 		}
 
 	}
-	dm.Search();
+	/////2  15
+}
+void main(int argc,char *argv[])
+{
+     Test_Search();
+}
+/*
+void thread_fun()
+{
+	for (int i = 0; i < 10; ++i)
+	{
+		cout << "This is Child thread." << endl;
+	}
+}
+class Test
+{
+public:
+	void fun()
+	{
+		cout << "This is Test::fun()." << endl;
+	}
+};
+void Test_Thread()
+{
+	Test t;
+	thread th(&Test::fun,&t);
 
+	th.detach();//分离
+	for (int i = 0; i < 10; ++i)
+	{
+		cout << "This is Main thread." << endl;
+	}
+	th.join();
 }
 int main(int argc, char* argv[])
 {
@@ -190,8 +221,9 @@ int main(int argc, char* argv[])
 	//Test_SqliteManager();
 	//Test_Log();
 	//Test_Set();
-	Test_Map();
+	//Test_Map();
 	//Test_Scan();
+	Test_Thread();
 	return 0;
 }
 /*
