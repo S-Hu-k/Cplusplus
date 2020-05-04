@@ -48,11 +48,11 @@ private:
 //////////////////////////////////////////////////////////////////
 class DataManager
 {
-
+public:
+	static DataManager& GetInstance();
 public:
 	void InitSqlite();
 public:
-	DataManager();
 	~DataManager();
 public:
 	void InsertDoc(const string& path, const string& doc);
@@ -60,6 +60,8 @@ public:
 	void DeleteDoc(const string& path, const string& doc);
 public:
 	void Search(const string& key, vector<pair<string, string>>&doc_path);
+private:
+	DataManager();
 private:
 	SqliteManager m_dbmgr;
 };

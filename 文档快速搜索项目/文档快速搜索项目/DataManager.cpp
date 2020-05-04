@@ -94,6 +94,21 @@ AutoGetResultTabes::~AutoGetResultTabes()
 
 
 ////////////////////////////////////////////////////////////////////////////
+ DataManager& DataManager::GetInstance()
+{
+	 static DataManager inst;
+	 return inst;
+}
+
+
+
+
+
+
+
+
+
+
 DataManager::DataManager()
 {
 	m_dbmgr.Open(DOC_DB);

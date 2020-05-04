@@ -13,5 +13,5 @@ public:
 private:
 	//ScanManager();
 private:
-	DataManager m_db;
+	//DataManager m_db;
 };

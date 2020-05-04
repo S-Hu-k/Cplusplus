@@ -1,6 +1,46 @@
 #include"ScanManager.h"
 #include"Sysutil.cpp"
 
+
+
+ScanManager::ScanManager()
+{
+}
+void ScanManager::StartScan(const string& path)
+{
+    while (1)
+    {
+        //休眠3秒  每隔3秒扫描一次
+        this_thread::sleep_for(chrono::seconds(3));
+        ScanDirectory(path);
+        
+    }
+}
+ ScanManager& ScanManager::CreateInstance(const string& path)
+{
+     static ScanManager inst;
+     thread scan_thread(&StartScan, &inst, path);
+     scan_thread.detach();
+     return inst;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void ScanManager::ScanDirectory(const string& path)
 {
     //1 扫描本地文件系统
@@ -17,6 +57,9 @@ void ScanManager::ScanDirectory(const string& path)
 
 
     //2 扫描数据库文件系统
+    DataManager& m_db = DataManager::GetInstance();
+
+
     multiset<string> db_set;
     m_db.GetDocs(path, db_set);
 

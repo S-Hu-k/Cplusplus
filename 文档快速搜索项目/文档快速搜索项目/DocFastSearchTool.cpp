@@ -5,7 +5,7 @@
 #include"DataManager.h"
 #pragma comment(lib,"./sqlite/sqlite3.lib")
 #include"ScanManager.h"
-
+#include"Sysframe.h"
 
 
 void Test_DirectionList()
@@ -157,11 +157,11 @@ void Test_Search()
 	const string& path = "C:\\Users\\baoso\\Desktop\\Pro_81\\my_dir";
 
 	//创建扫描
-	ScanManager sm;
-	sm.ScanDirectory(path);
+	ScanManager::CreateInstance(path).ScanDirectory(path);
+	//sm.ScanDirectory(path);
 
 	//创建搜索实例
-	DataManager dm;
+	DataManager& dm = DataManager::GetInstance();
 
 	string key;
 	vector<	pair<string, string>>doc_path;
@@ -180,14 +180,28 @@ void Test_Search()
 		}
 
 	}
-	/////2  15
+}
+void Test_ChineseConvertPinYinAllSpell()
+{
+	string str = "比特科技";
+	string pinyin = ChineseConvertPinYinAllSpell(str);
+	cout << "pinyin" << pinyin << endl;
+}
 
-
-
+void Test_Frame()
+{
+	//system("mode con cols=2084 lines=3984");
+	//SetCurPos(4, (2084 - strlen("jkdhfjdkfd") / 2));
+	//printf("jkdhfjdkfd.\n");
+	char *title = "文档快速搜索工具";
+	DrawFrame(title);
+	  
 }
 void main(int argc,char *argv[])
 {
-     Test_Search();
+     //Test_Search();
+	//Test_ChineseConvertPinYinAllSpell();
+	Test_Frame();
 }
 /*
 void thread_fun()
