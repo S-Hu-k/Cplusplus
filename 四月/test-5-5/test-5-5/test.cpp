@@ -5,8 +5,6 @@
 using namespace std;
 
 
-//246
-
 template<class Type>
 class BSTree;
 
