@@ -4,7 +4,6 @@
 #include<stack>
 using namespace std;
 
-//202
 template<class Type>
 class AVLTree;
 
@@ -26,7 +25,6 @@ private:
 	AVLNode<Type>* rightChild;
 	int            bf; //平衡因子 0 -1 1 -2 2
 };
-
 
 template<class Type>
 class AVLTree
@@ -51,7 +49,26 @@ protected:
 
 		ptr->bf = subL->bf = 0;
 	}
-	void RotateRL(AVLNode<Type>*& ptr);
+	void RotateRL(AVLNode<Type>*& ptr)
+	{
+		AVLNode<Type>* subL = ptr;
+		AVLNode<Type>* subR = ptr->rightChild;
+		ptr = subR->leftChild;
+
+		//先右转
+		subR->leftChild = ptr->rightChild;
+		ptr->rightChild = subR;
+
+		//再左转
+		subL->leftChild = ptr->leftChild;
+		ptr->leftChild = subL;
+
+		ptr->bf = 0;
+
+
+
+
+	}
 	void RotateR(AVLNode<Type>*& ptr)
 	{
 		AVLNode<Type>* subR=ptr;
@@ -78,7 +95,7 @@ bool AVLTree<Type>::Inerst(AVLNode<Type>*& t, const Type& x)
 	stack<AVLNode<Type>*> st;
 
 
-	while(p!=nullptr)
+	while (p != nullptr)
 	{
 		if (x == p->data)
 
@@ -86,12 +103,12 @@ bool AVLTree<Type>::Inerst(AVLNode<Type>*& t, const Type& x)
 
 		pr = p;
 		st.push(pr);
-		if (x < p  ->data)
+		if (x < p->data)
 			p = p->leftChild;
-		else if(x>p->data)
+		else if (x > p->data)
 			p = p->rightChild;
-			  
-	
+
+
 	}
 
 	p = new AVLNode<Type>(x);
@@ -111,12 +128,13 @@ bool AVLTree<Type>::Inerst(AVLNode<Type>*& t, const Type& x)
 	//2.调整平衡因子
 	while (!st.empty())
 	{
-		pr=st.top();
+		pr = st.top();
 		st.pop();
 		if (p == pr->leftChild)
 			pr->bf--;
 		else if (p == pr->rightChild)
 			pr->bf++;
+
 		if (pr->bf == 0)
 			break;
 		if (pr->bf == 1 || pr->bf == -1)
@@ -128,45 +146,44 @@ bool AVLTree<Type>::Inerst(AVLNode<Type>*& t, const Type& x)
 			{
 				if (p->bf > 0)
 				{
-					cout << "RotateL" << endl;	
-					//RotateL   \
-					
+					RotateL(pr);
+					//                 \			
 				}
 				else
 				{
-					//RotateRL   >
-					cout << "RotateRL" << endl;
+					RotateRL(pr);
+					//cout << "RotateRL" << endl;                      //            >
 				}
 			}
 			else
 			{
 				if (p->bf < 0)
 				{
-					RotateR(pr);   
-					//cout << "RotateR" << endl;   //   /
+					RotateR(pr);
+					//cout << "RotateR" << endl;                       //            /
 				}
 				else
 				{
-					//RotateLR       <
-					cout << "RotateLR" << endl;
+					RotateLR(pr);
+					//cout << "RotateLR" << endl;                     //              <
 				}
 			}
 			break;
 		}
-	}
-	//重新连接父节点
-	if (st.empty())
-		t = pr;
-	else
-	{
-		AVLNode<Type>* ppr = st.top();
-		if (ppr->data > pr->data)
-			ppr->leftChild = pr;
+		//重新连接父节点
+		if (st.empty())
+			t = pr;
 		else
-			ppr->rightChild = pr;
+		{
+			AVLNode<Type>* ppr = st.top();
+			if (ppr->data > pr->data)
+				ppr->leftChild = pr;
+			else
+				ppr->rightChild = pr;
 
-	}
-	return true;
+		}
+		
+	}return true;
 }
 
 int main()
