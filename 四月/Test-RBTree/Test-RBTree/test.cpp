@@ -4,6 +4,7 @@ using namespace std;
 
 typedef enum { RED = 0, BLACK = 1 }Color_Type;
 
+
 template<class Type>
 class RBTree;
 
