@@ -96,6 +96,7 @@ protected:
 
 		//ÏÈÓÒ×ª
 		subR->leftChild = ptr->rightChild;
+
 		ptr->rightChild = subR;
 		//subR bf
 		if (ptr->bf >= 0)
