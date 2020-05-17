@@ -34,6 +34,7 @@ public:
 		NIL->color = BLACK;
 	}
 public:
+
 	bool Insert(const Type& x)
 	{
 		return Insert(root, x);
