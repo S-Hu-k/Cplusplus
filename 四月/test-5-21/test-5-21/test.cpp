@@ -45,6 +45,7 @@ protected:
 	}
 
 private:
+
 	RBTreeNode<Type>* NIL;
 	RBTreeNode<Type>* root;
 

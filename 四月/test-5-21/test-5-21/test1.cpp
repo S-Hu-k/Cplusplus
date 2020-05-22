@@ -27,6 +27,7 @@ private:
 };
 
 template<class	Type>
+
 class RBTree
 {
 public:
