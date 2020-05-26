@@ -6,11 +6,14 @@ typedef enum { RED = 0, BLACK = 1 }Color_Type;
 template<class Type>
 class RBTree;
 
+template<class Type>
+class rb_iterator;
 
 template<class Type>
 class RBTreeNode
 {
 	friend class RBTree<Type>;
+	friend class rb_iterator<Type>;
 public:
 	RBTreeNode(const Type& d = Type())
 		: data(d), leftChild(nullptr), rightChild(nullptr), parent(nullptr), color(RED)
@@ -24,20 +27,79 @@ private:
 	RBTreeNode<Type>* parent;
 	Color_Type        color;
 };
+
+template<class Type>
+class rb_iterator
+{
+	typedef rb_iterator<Type> self;
+public:
+	rb_iterator(RBTreeNode<Type> *p, RBTreeNode<Type> *nil):node(p),NIL(nil)
+	{}
+	Type& operator*()
+	{
+		return node->data;
+	}
+	RBTreeNode<Type>* operator->()
+	{
+		return node;
+	}
+
+
+	self& operator++()
+	{
+		increament();
+		return *this;
+	}
+	self operator++(int);
+	self& operator--();
+	self operator--(int);
+
+	bool operator==(self& it)
+	{
+		return node == it.node;
+	}
+	bool operator!=(self& it)
+	{
+		return node != it.node;
+	}
+protected:
+	void increament()
+	{
+
+	}
+private:
+	RBTreeNode<Type>* node;
+	RBTreeNode<Type>* NIL;
+
+};
+
 template<class Type>
 class RBTree
 {
+	typedef rb_iterator<Type> iterator;
 public:
-	RBTree() : root(NIL), NIL(_Buynode())
+	RBTree() : root(NIL), NIL(_Buynode()), end_node(_Buynode()) 
 	{
 		NIL->parent = NIL->leftChild = NIL->rightChild = nullptr;
 		NIL->color = BLACK;
+		end_node->leftChild = end_node->rightChild = end_node->parent = nullptr;
 	}
 public:
-
 	bool Insert(const Type& x)
 	{
 		return Insert(root, x);
+	}
+public:
+	iterator begin()
+	{
+		RBTreeNode<Type>* p = root;
+		if (p != NIL && p->leftChild != NIL)
+			p = p->leftChild;
+		return iterator(p, NIL);
+	}
+	iterator end()
+	{
+		return iterator(end_node, NIL);
 	}
 protected:
 	bool Insert(RBTreeNode<Type>*& t, const Type& x);
@@ -56,6 +118,8 @@ protected:
 private:
 	RBTreeNode<Type>* NIL;
 	RBTreeNode<Type>* root;
+	RBTreeNode<Type>* end_node;
+
 };
 
 template<class Type>
@@ -190,5 +254,12 @@ int main()
 	for (const auto& e : iv)
 		rb.Insert(e);
 
+	auto it = rb.begin();
+	while (it != rb.end())
+	{
+		cout << *it << " ";
+		++it;
+	}
+	cout << endl;
 	return 0;
 }
