@@ -3,6 +3,7 @@
 using namespace std;
 
 typedef enum { RED = 0, BLACK = 1 }Color_Type;
+
 template<class Type>
 class RBTree;
 
@@ -33,7 +34,8 @@ class rb_iterator
 {
 	typedef rb_iterator<Type> self;
 public:
-	rb_iterator(RBTreeNode<Type> *p, RBTreeNode<Type> *nil):node(p),NIL(nil)
+	rb_iterator(RBTreeNode<Type>* p, RBTreeNode<Type>* nil, RBTreeNode<Type>* enode)
+		: node(p), NIL(nil), end_node(enode)
 	{}
 	Type& operator*()
 	{
@@ -44,14 +46,17 @@ public:
 		return node;
 	}
 
-
 	self& operator++()
 	{
-		increament();
+		increment();
 		return *this;
 	}
 	self operator++(int);
-	self& operator--();
+	self& operator--()
+	{
+		decrement();
+		return *this;
+	}
 	self operator--(int);
 
 	bool operator==(self& it)
@@ -63,43 +68,87 @@ public:
 		return node != it.node;
 	}
 protected:
-	void increament()
+	void increment()
 	{
-
+		if (node->rightChild != NIL)
+		{
+			node = node->rightChild;
+			if (node == end_node)
+				return;
+			while (node->leftChild != NIL)
+				node = node->leftChild;
+		}
+		else
+		{
+			RBTreeNode<Type>* pr = node->parent;
+			while (node == pr->rightChild)
+			{
+				node = pr;
+				pr = node->parent;
+			}
+			node = pr;
+		}
+	}
+	void decrement()
+	{
+		if (node->leftChild != NIL)
+		{
+			node = node->leftChild;
+			while (node->rightChild != NIL)
+				node = node->rightChild;
+		}
+		else
+		{
+			RBTreeNode<Type>* pr = node->parent;
+			while (node == pr->leftChild)
+			{
+				node = pr;
+				pr = node->parent;
+			}
+			node = pr;
+		}
 	}
 private:
 	RBTreeNode<Type>* node;
 	RBTreeNode<Type>* NIL;
-
+	RBTreeNode<Type>* end_node;
 };
 
 template<class Type>
 class RBTree
 {
-	typedef rb_iterator<Type> iterator;
 public:
-	RBTree() : root(NIL), NIL(_Buynode()), end_node(_Buynode()) 
+	typedef rb_iterator<Type> iterator;
+	RBTree() : root(NIL), NIL(_Buynode()), end_node(_Buynode())
 	{
 		NIL->parent = NIL->leftChild = NIL->rightChild = nullptr;
 		NIL->color = BLACK;
-		end_node->leftChild = end_node->rightChild = end_node->parent = nullptr;
-	}
-public:
-	bool Insert(const Type& x)
-	{
-		return Insert(root, x);
+		end_node->leftChild = end_node->rightChild = end_node->parent = NIL;
 	}
 public:
 	iterator begin()
 	{
 		RBTreeNode<Type>* p = root;
-		if (p != NIL && p->leftChild != NIL)
+		while (p != NIL && p->leftChild != NIL)
 			p = p->leftChild;
-		return iterator(p, NIL);
+		return iterator(p, NIL, end_node);
 	}
 	iterator end()
 	{
-		return iterator(end_node, NIL);
+		return iterator(end_node, NIL, end_node);
+	}
+	void set_endnode()
+	{
+		RBTreeNode<Type>* p = root;
+		while (p != NIL && p->rightChild != NIL)
+			p = p->rightChild;
+		p->rightChild = end_node;
+		end_node->parent = p;
+	}
+public:
+	bool Insert(const Type& x)
+	{
+		return Insert(root, x);
 	}
 protected:
 	bool Insert(RBTreeNode<Type>*& t, const Type& x);
@@ -107,7 +156,6 @@ protected:
 protected:
 	void RightRotate(RBTreeNode<Type>*& t, RBTreeNode<Type>* p);
 	void LeftRotate(RBTreeNode<Type>*& t, RBTreeNode<Type>* p);
-
 protected:
 	RBTreeNode<Type>* _Buynode(const Type& x = Type())
 	{
@@ -119,7 +167,6 @@ private:
 	RBTreeNode<Type>* NIL;
 	RBTreeNode<Type>* root;
 	RBTreeNode<Type>* end_node;
-
 };
 
 template<class Type>
@@ -157,34 +204,35 @@ bool RBTree<Type>::Insert(RBTreeNode<Type>*& t, const Type& x)
 }
 
 template<class Type>
-void RBTree<Type>::Insert_Fixup(RBTreeNode<Type>*& t, RBTreeNode<Type>* x )
+void RBTree<Type>::Insert_Fixup(RBTreeNode<Type>*& t, RBTreeNode<Type>* x)
 {
 	while (x->parent->color == RED)
 	{
-		//在内部进行调整
 		RBTreeNode<Type>* s;
-		if (x->parent == x->parent->parent->left)//左分支
+		if (x->parent == x->parent->parent->leftChild)//左分支
 		{
 			s = x->parent->parent->rightChild;
 			if (s->color == RED)
 			{
+				//状况三
 				x->parent->color = BLACK;
-				s->color = BLACK; 
-				x->parent->parent->color = RED;		
-
+				s->color = BLACK;
+				x->parent->parent->color = RED;
 				x = x->parent->parent;
 				continue;
 			}
 			else if (x == x->parent->rightChild)
 			{
+				//状况二
 				x = x->parent;
 				LeftRotate(t, x);
 			}
-			x->parent->color = BLACK;//p
-			x->parent->parent->color = RED;//g
+			//状况一
+			x->parent->color = BLACK;        //p
+			x->parent->parent->color = RED;  //g
 			RightRotate(t, x->parent->parent);
 		}
-		else//右分支
+		else //右分支
 		{
 			s = x->parent->parent->leftChild;
 			if (s->color == RED)
@@ -200,30 +248,12 @@ void RBTree<Type>::Insert_Fixup(RBTreeNode<Type>*& t, RBTreeNode<Type>* x )
 				x = x->parent;
 				RightRotate(t, x);
 			}
-			x->parent->color = BLACK;//p
-			x->parent->parent->color = RED;//g
+			x->parent->color = BLACK;
+			x->parent->parent->color = RED;
 			LeftRotate(t, x->parent->parent);
 		}
 	}
 	t->color = BLACK;
-}
-
-template<class Type>
-void RBTree<Type>::RightRotate(RBTreeNode<Type>*& t, RBTreeNode<Type>* p)
-{
-	RBTreeNode<Type>* s = p->leftChild;
-	s->leftChild = p->rightChild;
-	if (s->rightChild != NIL)
-		s->rightChild->parent = p;
-	s->parent = p->parent;
-	if (p->parent == NIL)
-		t = s;
-	else if (p == p->parent->leftChild)
-		p->parent->leftChild = s;
-	else
-		p->parent->rightChild = s;
-	s->rightChild = p;
-	p->parent = s;
 }
 
 template<class Type>
@@ -244,22 +274,41 @@ void RBTree<Type>::LeftRotate(RBTreeNode<Type>*& t, RBTreeNode<Type>* p)
 	p->parent = s;
 }
 
-
-
+template<class Type>
+void RBTree<Type>::RightRotate(RBTreeNode<Type>*& t, RBTreeNode<Type>* p)
+{
+	RBTreeNode<Type>* s = p->leftChild;
+	p->leftChild = s->rightChild;
+	if (s->rightChild != NIL)
+		s->rightChild->parent = p;
+	s->parent = p->parent;
+	if (p->parent == NIL)
+		t = s;
+	else if (p == p->parent->leftChild)
+		p->parent->leftChild = s;
+	else
+		p->parent->rightChild = s;
+	s->rightChild = p;
+	p->parent = s;
+}
 
 int main()
 {
-	vector<int> iv{ 10, 7, 4, 20, 15, 11,12,13 };
+	vector<int> iv{ 10, 7, 8, 4, 2, 20, 15, 11,12,13 };
+	//vector<int> iv {10, 7, 8};
 	RBTree<int> rb;
 	for (const auto& e : iv)
 		rb.Insert(e);
+	rb.set_endnode();
 
-	auto it = rb.begin();
-	while (it != rb.end())
+	auto it = rb.end();
+	--it;
+	while (it != rb.begin())
 	{
 		cout << *it << " ";
-		++it;
+		--it;
 	}
+	cout << *it;
 	cout << endl;
 	return 0;
 }
