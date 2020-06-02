@@ -13,7 +13,34 @@
 #include<unordered_map>
 using namespace std;
 
+void main()
+{
+	multimap<int, string> ismap = { {1,"asjs"},{2,";sakl"},{1,"asjsdf"},{2,";safgzdkl"},{3,"lsjdk"} };
 
+	for (const auto& e : ismap)
+		cout << e.first << "->" << e.second << endl;
+}
+/*
+void main()
+{
+	map<int, string> ismap = { {1,"asjs"},{2,";sakl"},{3,"lsjdk"} };
+	//Í·²å
+	ismap.insert(ismap.begin(), make_pair(8, "kdscj"));
+	//Î²²å
+	ismap.insert(ismap.end(), make_pair(6, "kdvjnldscj"));
+	//ÖÐ¼ä²å
+	auto pos = ismap.find(2);
+if (pos != ismap.end())
+	{
+		ismap.insert(ismap.begin(), make_pair(1, "sgdeiijvl;kdscj"));
+
+	}
+
+	for (const auto& e : ismap)
+		cout << e.first << "->" << e.second << endl;
+
+}
+/*
 int main()
 {
 	hash_map<int, string> hmap = { {1,"Student"}, {3,"Friend"},{1,"Student1"}, {4, "Bit"},{1,"Student2"},{2,"Teacher"} };
