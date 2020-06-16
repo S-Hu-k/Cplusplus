@@ -1,3 +1,14 @@
+
+#include<iostream>
+#include<cstdio>
+using namespace std;
+int main()
+{
+	printf("%5.2f\n", 12.0 * 3 / 4);
+	return 0;
+}
+
+
 /*现在有两个好友A和B，住在一片长有蘑菇的由n＊m个方格组成的草地，A在(1, 1), 
 B在(n, m)。现在A想要拜访B，由于她只想去B的家，所以每次她只会走(i, j + 1)或(i + 1, j)这样的路线，
 在草地上有k个蘑菇种在格子里(多个蘑菇可能在同一方格), 问：A如果每一步随机选择的话(若她在边界上，
