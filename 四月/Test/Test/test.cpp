@@ -1,4 +1,172 @@
-//输入有多组数据，每组数据有两行。
+
+
+/*题目描述
+
+上图是一个电话的九宫格，如你所见一个数字对应一些字母，因此在国外企业喜欢把电话号码设计成与自己公司名字相对应。
+例如公司的Help Desk号码是4357，因为4对应H、3对应E、5对应L、7对应P，因此4357就是HELP。同理，TUT-GLOP就代表888-4567、310-GINO代表310-4466。
+NowCoder刚进入外企，并不习惯这样的命名方式，现在给你一串电话号码列表，请你帮他转换成数字形式的号码，并去除重复的部分。
+
+输入描述:
+输入包含多组数据。
+每组数据第一行包含一个正整数n（1≤n≤1024）。
+紧接着n行，每行包含一个电话号码，电话号码仅由连字符“-”、数字和大写字母组成。
+没有连续出现的连字符，并且排除连字符后长度始终为7（美国电话号码只有7位）。
+
+输出描述:
+对应每一组输入，按照字典顺序输出不重复的标准数字形式电话号码，即“xxx-xxxx”形式。
+每个电话号码占一行，每组数据之后输出一个空行作为间隔符。
+
+示例
+输入
+12
+4873279
+ITS-EASY
+888-4567
+3-10-10-10
+888-GLOP
+TUT-GLOP
+967-11-11
+310-GINO
+F101010
+888-1200
+-4-8-7-3-2-7-9-
+487-3279
+4
+UTT-HELP
+TUT-GLOP
+310-GINO
+000-1213
+输出
+310-1010
+310-4466
+487-3279
+888-1200
+888-4567
+967-1111
+
+000-1213
+310-4466
+888-4357
+888-4567
+
+解题思路
+先用string将所有输入中含数字或者字母的字符全都转化成7位数字字符，然后重新定义输出格式，用set存储可自动实现排序和去重，最后将set输出即可。
+
+# include <iostream>
+#include <string>
+#include <set>
+using namespace std;
+
+string AtoS(string s2,string s1)   //将输入的字符串转成标准字符串
+{
+	string s = "";
+	for (int i = 0; i < s2.size(); i++)
+	{
+		if (s2[i]>='0'&&s2[i]<='9')   //数字1-9 直接放入字符串
+			s.push_back(s2[i]);
+		else if (s2[i] == '-')   //字符 '-' 忽略
+			continue;
+		else       //字符A-Z 转成数字
+		{
+			char b = s1[s2[i] - 'A'];
+				s.push_back(b);
+		}
+	}
+	//将字符串分隔成两部分，再写成标准形式
+	string ret1 = s.substr(0, 3);
+	string ret2 = s.substr(3, 4);
+	s = "";
+	s += ret1;
+	s.push_back('-');   
+	s += ret2;
+	return s;
+}
+
+int main()
+{
+	string s1 = "22233344455566677778889999";
+	int n;
+	while (cin >> n)
+	{
+		set <string> data;   //set 可实现排序和去重
+		for (int i = 0; i < n; i++)
+		{
+			string a;
+			cin >> a;
+			string s = AtoS(a, s1);
+			data.insert(s);
+		}
+		for (auto &e : data)
+		{
+			cout << e << endl;
+		}
+		cout << endl;
+	}
+	return 0;
+}
+
+*/
+/*题目描述
+输入两个整数 n 和 m，从数列1，2，3.......n 中随意取几个数,使其和等于 m ,要求将其中所有的可能组合列出来
+
+输入描述:
+每个测试输入包含2个整数,n和m
+输出描述:
+按每个组合的字典序排列输出,每行输出一种组合
+ 
+
+基本思路：假设有一个数m,将m分成 1+（m-1）、2+（m-2）…………m/2+m/2。然后再将（m-1）分为2+（m-3）、3+（m-4）等等，
+将（m-2）分成3+（m-5），4+（m-6）。依次输出就好
+
+#include<vector>
+#include<iostream>
+using namespace std;
+ 
+void Find(vector<int> &Res ,int Now_Sum,int Now_Value,int n)
+{
+	if(Now_Sum<=n)
+	{
+		for (int i = 0; i < Res.size(); i++)
+		{
+			cout << Res[i] << ' ';
+		}
+		cout << Now_Sum << endl;
+	}
+	
+	for (int i = Now_Value; i <= Now_Sum/2; i++)
+	{
+		
+		if ((Now_Sum - i) > i)
+		{
+			int T_Now_Sum = Now_Sum - i;
+			vector<int> T_Res = Res;
+			T_Res.push_back(i);
+			int T_Now_Value = i + 1;
+			Find(T_Res, T_Now_Sum, T_Now_Value, n);
+		}
+	}
+}
+ 
+int main()
+{
+    int n, m;
+    cin >> n >> m;
+    for (int i = 1; i < n; i++)
+    {
+	    if (m - i > i)
+	    {
+		    vector<int> Temp;
+		    int Now_Sum = m - i;
+		    int Now_Value = i + 1;
+		    Temp.push_back(i);
+		    Find(Temp, Now_Sum, Now_Value,n);
+	    }
+    }
+    if(n>=m) cout << m;
+    return 0;
+}
+*/
+/*//输入有多组数据，每组数据有两行。
 //第一行抄送列表，姓名之间用一个逗号隔开。如果姓名中包含空格或逗号，则姓名包含在双引号里。总长度不超过512个字符。
 //第二行只包含一个姓名，是待查找的用户的名字（姓名要完全匹配）。长度不超过16个字符。
 //
