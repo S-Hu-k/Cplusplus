@@ -148,6 +148,10 @@ string niXu(string s)
 	return ret;
 }
 
+
+
+
+
 int main()
 {
 	string s;
