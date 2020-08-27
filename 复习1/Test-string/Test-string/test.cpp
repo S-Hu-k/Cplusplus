@@ -1,6 +1,91 @@
 #include<iostream>
+#include<string>
+
 using namespace std;
+/*
+//仅仅反转字母【https://leetcode-cn.com/problems/reverse-only-letters/】
+string reverseOnlyLetters(string S)
+{
+	int start = 0;
+	int end = S.size() - 1;
+	while (start < end)
+	{
+		//查找左边第一个字母
+		while (start < end)
+		{
+			if ((S[start] >= 'a' && S[start] <= 'z')
+				|| (S[start] >= 'A' && S[start] <= 'Z'))
+				break;
+			start++;
+		}
+		//查找右边第一个字母
+		while (start < end)
+		{
+			if ((S[end] >= 'a' && S[end] <= 'z')
+				|| (S[end] >= 'A' && S[end] <= 'Z'))
+				break;
+			end--;
+		}
+		if (start < end)
+		{
+			char tmp = S[start];
+			S[start] = S[end];
+			S[end] = tmp;
+			start++;
+			end--;
+		}
+	}
+	return S;
+}*/
+/*
 int main()
+{
+	string str = "Hello Bit.";
+	//直接输出
+	cout << str << endl;
+
+	//C++11
+	for (auto& e : str)
+		cout << e;
+	cout << endl;
+
+	//operator[]
+	for (int i = 0; i < str.size(); ++i)
+		cout << str[i] ;
+	cout << endl;
+
+	//string.at()
+	for (int i = 0; i < str.size(); ++i)
+		cout << str.at(i);
+	cout << endl;
+
+	//正向迭代器
+	string::iterator  it = str.begin();
+	while (it != str.end())
+	{
+		cout << *it;
+		++it;
+	}
+	cout << endl;
+	//反向迭代器
+	string::reverse_iterator  rit = str.rbegin();
+	while (rit != str.rend())
+	{
+		cout << *rit;
+		++rit;
+	}
+	cout << endl;
+	//正向迭代器反向输出
+	string::iterator it1 = str.end() - 1;
+	while (it1 != str.begin())
+	{
+		cout << *it1;
+		--it1;
+	}
+	cout << *it1;
+	cout << endl;
+}
+/*int main()
 {
 	string str = "Hello Bit.";
 
