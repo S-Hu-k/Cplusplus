@@ -1,4 +1,34 @@
 /*
+//字符串中第一个唯一字符【https://leetcode-cn.com/problems/first-unique-character-in-a-string/submissions/】
+//解法一
+int firstUniqChar(string s)
+{
+    int count[256] = { 0 };
+    for (int i = 0; i < s.size(); ++i)
+    {
+        count[s[i]] += 1;
+    }
+    for (int i = 0; i < s.size(); ++i)
+    {
+        if (count[s[i]] == 1)
+            return i;
+    }
+    return -1;
+}
+//解法二
+    int firstUniqChar(string s)
+    {
+        for(int i=0;i<s.size();++i)
+        {
+            int index1=s.find(s[i]);
+            int index2=s.rfind(s[i]);
+            if(index1==index2)
+            return i;
+        }
+        return -1;
+
+    }
+
 //反转字符串【https://leetcode-cn.com/problems/reverse-string/】
 void reverseString(vector<char>& s)
 {
