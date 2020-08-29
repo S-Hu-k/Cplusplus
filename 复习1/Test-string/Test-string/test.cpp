@@ -3,8 +3,193 @@
 
 using namespace std;
 
-
+namespace bit
+{
+	class String
+	{
+	public:
+		typedef char* iterator;
+	public:
+		String(const char* str = "")
+		{
+			_size = strlen(str);
+			_capacity = _size;
+			_str = new char[_capacity + 1];
+			strcpy(_str, str);
+		}
+		String(const String& s)
+			: _str(nullptr)
+			, _size(0)
+			, _capacity(0)
+		{
+			String tmp(s);
+			this->Swap(tmp);
+		}
+		String& operator=(String s)
+		{
+			this->Swap(s)
+				return *this;
+		}
+		~String()
+		{
+			if (_str)
+			{
+				delete[] _str;
+				_str = nullptr;
+			}
+		}
+		/////////////////////////////////////////////////////////////////
+		// iterator
+		iterator begin() { return _str; }
+		iterator end() { return _str + _size; }
+		/////////////////////////////////////////////////////////////////
+		// modify
+		void PushBack(char c)
+		{
+			if (_size == _capacity)
+				Reserve(_capacity * 2);
+			_str[_size++] = c;
+			_str[_size] = '\0';
+		}
+		String& operator+=(char c)
+		{
+			PushBack(c);
+			return *this;
+		}
+		// 作业实现
+		void Append(const char* str);
+		String& operator+=(const char* str);
+		void Clear()
+		{
+			_size = 0;
+			_str[_size] = '\0';
+		}
+		void Swap(String& s)
+		{
+			swap(_str, s._str);
+			swap(_size, s._size);
+			swap(_capacity, s._capacity);
+		}
+		const char* C_Str()const
+		{
+			return _str;
+		}
+		/////////////////////////////////////////////////////////////////
+		// capacity
+		size_t Size()const
+			size_t Capacity()const
+			bool Empty()const
+			void Resize(size_t newSize, char c = '\0')
+		{
+			if (newSize > _size)
+			{
+				// 如果newSize大于底层空间大小，则需要重新开辟空间
+				if (newSize > _capacity)
+				{
+					Reserve(newSize);
+				}
+				memset(_str + _size, c, newSize - _size);
+			}
+			_size = newSize;
+			_str[newSize] = '\0';
+		}
+		void Reserve(size_t newCapacity)
+		{
+			// 如果新容量大于旧容量，则开辟空间
+		if(newCapacity > _capacity)
+			{
+				char* str = new char[newCapacity + 1];
+				strcpy(str, _str);
+				// 释放原来旧空间,然后使用新空间
+				delete[] _str;
+				_str = str;
+				_capacity = newCapacity;
+			}
+		}
+		////////////////////////////////////////////////////////////////////
+		// access
+		char& operator[](size_t index)
+		{
+			assert(index < _size);
+			return _str[index];
+		}
+		const char& operator[](size_t index)const
+		{
+			assert(index < _size);
+			return _str[index];
+		}
+		////////////////////////////////////////////////////////////////////
+		// 作业
+		bool operator<(const String& s);
+		bool operator<=(const String& s);
+		bool operator>(const String& s);
+		bool operator>=(const String& s);
+		bool operator==(const String& s);
+		bool operator!=(const String& s);
+		// 返回c在string中第一次出现的位置
+		size_t Find(char c, size_t pos = 0) const;
+		// 返回子串s在string中第一次出现的位置
+		size_t Find(const char* s, size_t pos = 0) const;
+		// 在pos位置上插入字符c/字符串str，并返回该字符的位置
+		String& Insert(size_t pos, char c);
+		String& Insert(size_t pos, const char* str);
+		// 删除pos位置上的元素，并返回该元素的下一个位置
+		String& Erase(size_t pos, size_t len);
+	private:
+		friend ostream& operator<<(ostream& _cout, const bit::String& s);
+	private:
+		char* _str;
+		size_t _capacity;
+		size_t _size;
+	};
+}
+ostream& bit::operator<<(ostream& _cout, const bit::String& s)
+{
+	cout << s._str;
+	return _cout;
+}
+///////对自定义的string类进行测试
+void TestBitString()
+{
+	bit::String s1("hello");
+	s1.PushBack(' ');
+	s1.PushBack('b');
+	s1.Append(1, 'i');
+	s1 += 't';
+	cout << s1 << endl;
+	cout << s1.Size() << endl;
+	cout << s1.Capacity() << endl;
+	// 利用迭代器打印string中的元素
+	String::iterator it = s1.begin();
+	while (it != s1.end())
+	{
+		cout << *it << " ";
+		++it;
+	}
+	cout << endl;
+	// 这里可以看到一个类只要支持的基本的iterator，就支持范围for
+	for (auto ch : s1)
+		cout << ch << " ";
+	cout << endl;
+}
 /*
+//字符串最后一个单词的长度【https://www.nowcoder.com/questionTerminal/8c949ea5f36f422594b306a2300315da】
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+	string str;
+	while(getline(cin,str))
+	{
+		size_t pos=str.rfind(" ");
+		if(pos==string::npos)
+			printf("%d",str.size());
+		else
+			printf("%d",str.size()-pos-1);
+	}
+	return 0;
+}
 //字符串中第一个唯一字符【https://leetcode-cn.com/problems/first-unique-character-in-a-string/submissions/】
 解法一
    int firstUniqChar(string s)
