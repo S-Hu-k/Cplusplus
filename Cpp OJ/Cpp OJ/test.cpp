@@ -1,4 +1,21 @@
 /*
+//字符串最后一个单词的长度【https://www.nowcoder.com/questionTerminal/8c949ea5f36f422594b306a2300315da】
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+    string str;
+    while(getline(cin,str))
+    {
+        size_t pos=str.rfind(" ");
+        if(pos==string::npos)
+            printf("%d",str.size());
+        else
+            printf("%d",str.size()-pos-1);
+    }
+    return 0;
+}
 //字符串中第一个唯一字符【https://leetcode-cn.com/problems/first-unique-character-in-a-string/submissions/】
 //解法一
 int firstUniqChar(string s)
