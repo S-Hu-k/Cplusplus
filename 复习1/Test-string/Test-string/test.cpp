@@ -2,8 +2,157 @@
 #include<string>
 
 using namespace std;
+#include<iostream>
+#include<string>
+#include<vld.h>
+#include<assert.h>
+using namespace std;
 
 namespace bit
+{
+	class string
+	{
+		friend ostream& operator<<(ostream& out, const string& s);
+		friend istream& operator>>(istream& _cin, bit::string& s);
+	public:
+		typedef char* iterator;
+	public:
+		string(const char* str = "") :m_str(nullptr)
+		{
+			m_capacity = m_size = strlen(str);
+			m_str = new char[m_capacity + 1];  // \0
+			strcpy(m_str, str);
+		}
+		string(const string& s) : m_str(nullptr), m_capacity(0), m_size(0)
+		{
+			string tmp(s.m_str);
+			_swap(*this, tmp);
+		}
+		string& operator=(const string& s)
+		{
+			if (this != &s)
+			{
+				string tmp(s);
+				_swap(*this, tmp);
+			}
+			return *this;
+		}
+		~string()
+		{
+			if (m_str)
+			{
+				delete[]m_str;
+				m_str = nullptr;
+			}
+			m_capacity = m_size = 0;
+		}
+	public:
+		iterator begin()
+		{
+			return m_str;
+		}
+		iterator end()
+		{
+			return m_str + size();
+		}
+	public:
+		size_t size()const
+		{
+			return m_size;
+		}
+		size_t capacity()const
+		{
+			return m_capacity;
+		}
+		bool empty()const
+		{
+			return m_size == 0;
+		}
+		void clear()
+		{
+			m_size = 0;
+			m_str[0] = '\0';
+		}
+	public:
+		const char* c_str()const
+		{
+			return m_str;
+		}
+	public:
+		void push_back(char c)
+		{
+			if (m_size >= m_capacity)
+				reserve(m_capacity * 2);
+			m_str[m_size++] = c;
+			m_str[m_size] = '\0';
+		}
+	public:
+		string& operator+=(char c);
+		void append(const char* str);
+		string& operator+=(const char* str);
+		void resize(size_t newSize, char c = '\0');
+		const char& operator[](size_t index)const;
+		bool operator<(const string& s);
+		bool operator<=(const string& s);
+		bool operator>(const string& s);
+		bool operator>=(const string& s);
+		bool operator==(const string& s);
+		bool operator!=(const string& s);
+		// 返回c在string中第一次出现的位置
+		size_t find(char c, size_t pos = 0) const;
+		// 返回子串s在string中第一次出现的位置
+		size_t find(const char* s, size_t pos = 0) const;
+		// 在pos位置上插入字符c/字符串str，并返回该字符的位置
+		string& insert(size_t pos, char c);
+		string& insert(size_t pos, const char* str);
+		// 删除pos位置上的元素，并返回该元素的下一个位置
+		string& erase(size_t pos, size_t len);
+	public:
+		char& operator[](int i)
+		{
+			assert(i >= 0 && i < m_size);
+			return m_str[i];
+		}
+	public:
+		void reserve(size_t new_cpy)
+		{
+			if (new_cpy > m_capacity)
+			{
+				char* new_str = new char[new_cpy + 1];
+				memcpy(new_str, m_str, m_size);
+				m_capacity = new_cpy;
+				delete[]m_str;
+				m_str = new_str;
+			}
+		}
+	protected:
+		static void _swap(string& s1, string& s2)
+		{
+			std::swap(s1.m_str, s2.m_str);
+			std::swap(s1.m_capacity, s2.m_capacity);
+			std::swap(s1.m_size, s2.m_size);
+		}
+	private:
+		char* m_str;
+		size_t m_capacity;
+		size_t m_size;
+	};
+
+	ostream& operator<<(ostream& out, const string& s)
+	{
+		out << s.m_str;
+		return out;
+	}
+};
+
+void main()
+{
+	bit::string str("Hello C++");
+	cout << "str = " << str << endl;
+	str.push_back('x');
+	cout << "str = " << str << endl;
+}
+/*namespace bit
 {
 	class String
 	{
