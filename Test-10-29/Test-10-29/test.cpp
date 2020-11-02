@@ -64,15 +64,49 @@ protected:
 		SubL->rightChild= ptr->leftChild;
 		ptr->leftChild = SubL;
 
-
+		if (ptr->bf == 1)
+			SubL->bf = -1;
+		else
+			SubL->bf = 0;
 
 		//再右转
-		SubL->rightChild = SubR;
+		SubR->leftChild = ptr->rightChild;
+		ptr->rightChild = SubR;
+
+		if (ptr->bf == -1)
+			SubR->bf = 1;
+		else
+			SubR->bf = 0;
 
 
+
+		ptr->bf = 0;
 	}
 	void RotateRL(AVLNode<Type>*& ptr)
 	{
+		AVLNode<Type>* SubL = ptr;
+		AVLNode<Type>* SubR = ptr->rightChild;
+		ptr = SubR->leftChild;
+
+		//先右转
+		SubR->leftChild = ptr->leftChild;
+		ptr->rightChild = SubR;
+
+		if (ptr->bf >= 0)
+			SubR->bf = 0;
+		else
+			SubR->bf = 1;
+
+		//再左转
+		SubL->rightChild = ptr->leftChild;
+		ptr->leftChild = SubL;
+
+		if (ptr->bf <= 0)
+			SubL->bf = 0;
+		else
+			SubL->bf = -1;
+
+		ptr->bf = 0;
 
 	}
 private:
@@ -87,7 +121,6 @@ bool Insert(AVLNode<Type>*& t, const Type& x)
 	AVLNode<Type>* pr = nullptr;//表示当前节点的父节点
 	AVLNode<Type>* p = t;
 	stack< AVLNode<Type>*> st;//通过栈的形式存储节点
-
 
 	while (p != nullptr)
 	{
