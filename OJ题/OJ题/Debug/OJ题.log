@@ -1,0 +1,4 @@
+﻿  test.cpp
+C:\Users\20961\Desktop\Cplusplus\OJ题\OJ题\test.cpp(15,1): warning C4326: “main”的返回类型应为“int”而非“void”
+Debug\test.obj : warning LNK4042: 对象被多次指定；已忽略多余的指定
+  OJ题.vcxproj -> C:\Users\20961\Desktop\Cplusplus\OJ题\Debug\OJ题.exe
