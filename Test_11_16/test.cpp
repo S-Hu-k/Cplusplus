@@ -1,7 +1,51 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+	string s;
+	getline(cin, s);
+	reverse(s.begin(), s.end());//翻转整个句子
+	auto start = s.begin();
+	while (start != s.end())
+	{
+		auto end = start;
+		while (end != s.end() && *end != ' ')
+			end++;
+		reverse(start, end);
+
+		if (end != s.end())
+			start = end + 1;
+		else
+			start = end;
+	}
+	cout << s << endl;
+	return 0;
+}
+
+
+
+/*
 #include<string>
 #include<iostream>
 
 using namespace std;
+
+
+
+struct A
+{
+	unsigned a : 19;
+	unsigned b : 11;
+	unsigned c : 4;
+	unsigned d : 29;
+	char index;
+};
+int main()
+{
+	cout << sizeof(A) << endl;
+}
+/*
 int main()
 {
 	string str1;
