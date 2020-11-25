@@ -1,6 +1,44 @@
 #include<iostream>
 #include<string>
 using namespace std;
+
+	void example(char acWelcome[]) 
+	{
+		printf("%d", sizeof(acWelcome));
+		return;
+	}
+	void main() {
+		char acWelcome[] = "Welcome to Huawei Test";
+		example(acWelcome);
+		return;
+	}
+
+/*
+int main()
+{
+	unsigned char* p1;
+	unsigned long* p2;
+	p1 = (unsigned char*)0x801000;
+	p2 = (unsigned long*)0x810000;
+
+	cout << p1 + 5 << endl;
+	cout << p2 + 5 << endl;
+
+}
+
+/*
+enum string {
+	x1,
+	x2,
+	x3 = 10,
+	x4,
+	x5,
+} x;
+int main()
+{
+	cout << x << endl;
+}
+/*
 int main()
 {
 	string s;
