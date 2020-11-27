@@ -1,0 +1,4 @@
+﻿  test.cpp
+test.obj : error LNK2019: 无法解析的外部符号 "protected: void __cdecl AVLTree<int>::RotateRL(class AVLNode<int> * &)" (?RotateRL@?$AVLTree@H@@IEAAXAEAPEAV?$AVLNode@H@@@Z)，该符号在函数 "protected: bool __cdecl AVLTree<int>::Inerst(class AVLNode<int> * &,int const &)" (?Inerst@?$AVLTree@H@@IEAA_NAEAPEAV?$AVLNode@H@@AEBH@Z) 中被引用
+test.obj : error LNK2019: 无法解析的外部符号 "protected: void __cdecl AVLTree<int>::RotateLR(class AVLNode<int> * &)" (?RotateLR@?$AVLTree@H@@IEAAXAEAPEAV?$AVLNode@H@@@Z)，该符号在函数 "protected: bool __cdecl AVLTree<int>::Inerst(class AVLNode<int> * &,int const &)" (?Inerst@?$AVLTree@H@@IEAA_NAEAPEAV?$AVLNode@H@@AEBH@Z) 中被引用
+C:\Users\20961\Desktop\Cplusplus\四月\Test-AVL\x64\Debug\Test-AVL.exe : fatal error LNK1120: 2 个无法解析的外部命令

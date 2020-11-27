@@ -1,0 +1,4 @@
+﻿  test.cpp
+C:\Users\20961\Desktop\Cplusplus\Test-map set\Test-map set\test.cpp(11,1): warning C4326: “main”的返回类型应为“int”而非“void”
+test.obj : error LNK2005: _main 已经在 Test-map set.obj 中定义
+C:\Users\20961\Desktop\Cplusplus\Test-map set\Debug\Test-map set.exe : fatal error LNK1169: 找到一个或多个多重定义的符号

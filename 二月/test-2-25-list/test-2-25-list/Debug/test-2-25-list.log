@@ -1,0 +1,4 @@
+﻿  test.cpp
+C:\Users\20961\Desktop\Cplusplus\test-2-25-list\test-2-25-list\test.cpp(24,3): warning C4834: 放弃具有 "nodiscard" 属性的函数的返回值
+C:\Users\20961\Desktop\Cplusplus\test-2-25-list\test-2-25-list\test.cpp(32,3): warning C4834: 放弃具有 "nodiscard" 属性的函数的返回值
+  test-2-25-list.vcxproj -> C:\Users\20961\Desktop\Cplusplus\test-2-25-list\Debug\test-2-25-list.exe

@@ -1,0 +1,31 @@
+﻿  DataManager.cpp
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\DataManager.cpp(74,55): warning C4474: fprintf: 格式字符串中传递的参数太多
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\DataManager.cpp(74,55): message : 占位符和其参数预计 0 可变参数，但提供的却是 1 参数
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\DataManager.cpp(130,15): warning C4473: “sprintf”: 没有为格式字符串传递足够的参数
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\DataManager.cpp(130,15): message : 占位符和其参数预计 5 可变参数，但提供的却是 3 参数
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\DataManager.cpp(130,15): message : 缺失的可变参数 4 为格式字符串“%s”所需
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\DataManager.cpp(135,1): error C2511: “void DataManager::GetDocs(const std::string &,std::set<std::string,std::less<std::string>,std::allocator<std::string>> &)”:“DataManager”中没有找到重载的成员函数
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\DataManager.h(49): message : 参见“DataManager”的声明
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\DataManager.cpp(154,82): error C2065: “doc”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\DataManager.cpp(154,15): warning C4473: “sprintf”: 没有为格式字符串传递足够的参数
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\DataManager.cpp(154,15): message : 占位符和其参数预计 3 可变参数，但提供的却是 2 参数
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\DataManager.cpp(154,15): message : 缺失的可变参数 3 为格式字符串“%s”所需
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\DataManager.cpp(161,14): error C2065: “doc”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\DataManager.cpp(183,56): error C2661: “std::vector<std::pair<std::string,std::string>,std::allocator<std::pair<std::string,std::string>>>::push_back”: 没有重载函数接受 2 个参数
+  DocFastSearchTool.cpp
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\DocFastSearchTool.cpp(196,1): warning C4326: “main”的返回类型应为“int”而非“void”
+  ScanManager.cpp
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\Sysutil.cpp(164,20): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\ScanManager.cpp(7,1): error C2600: “ScanManager::ScanManager”: 不能定义编译器生成的特殊成员函数(必须首先在类中声明)
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\ScanManager.cpp(64,30): error C2664: “void DataManager::GetDocs(const std::string &,const std::set<std::string,std::less<std::string>,std::allocator<std::string>> &)”: 无法将参数 2 从“std::multiset<std::string,std::less<std::string>,std::allocator<std::string>>”转换为“const std::set<std::string,std::less<std::string>,std::allocator<std::string>> &”
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\ScanManager.cpp(64,30): message : 原因如下: 无法从“std::multiset<std::string,std::less<std::string>,std::allocator<std::string>>”转换为“const std::set<std::string,std::less<std::string>,std::allocator<std::string>>”
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\ScanManager.cpp(64,24): message : 没有可用于执行该转换的用户定义的转换运算符，或者无法调用该运算符
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\DataManager.h(59,7): message : 参见“DataManager::GetDocs”的声明
+  Sysframe.cpp
+  Sysutil.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\wingdi.h(4585,68): error C2143: 语法错误: 缺少“)”(在“常数”的前面)
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\wingdi.h(4585,68): error C2143: 语法错误: 缺少“;”(在“常数”的前面)
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\wingdi.h(4585,68): error C2059: 语法错误:“常数”
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\wingdi.h(4585,71): error C2059: 语法错误:“)”
+C:\Users\20961\Desktop\Cplusplus\文档快速搜索项目\文档快速搜索项目\Sysutil.cpp(164,20): warning C4018: “<”: 有符号/无符号不匹配
+  正在生成代码...

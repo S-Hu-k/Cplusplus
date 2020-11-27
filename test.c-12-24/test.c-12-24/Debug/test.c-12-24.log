@@ -1,0 +1,5 @@
+﻿  test.c
+C:\Users\20961\Desktop\Cplusplus\test.c-12-24\test.c-12-24\test.c(56,16): warning C4013: “fabs”未定义；假设外部返回 int
+C:\Users\20961\Desktop\Cplusplus\test.c-12-24\test.c-12-24\test.c(58,27): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+C:\Users\20961\Desktop\Cplusplus\test.c-12-24\test.c-12-24\test.c(59,18): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+  test.c-12-24.vcxproj -> C:\Users\20961\Desktop\Cplusplus\test.c-12-24\Debug\test.c-12-24.exe

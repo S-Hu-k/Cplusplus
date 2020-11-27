@@ -1,0 +1,21 @@
+﻿  test.cpp
+C:\Users\20961\Desktop\Cplusplus\四月\Test-bloomfilter\Test-bloomfilter\test.cpp(13,2): error C2440: “默认参数”: 无法从“const char [1]”转换为“char *”
+C:\Users\20961\Desktop\Cplusplus\四月\Test-bloomfilter\Test-bloomfilter\test.cpp(13,2): message : 从字符串文本转换将丢失 const 限定符(请参阅 /Zc:strictStrings)
+C:\Users\20961\Desktop\Cplusplus\四月\Test-bloomfilter\Test-bloomfilter\test.cpp(16,1): error C2440: “=”: 无法从“const char [1]”转换为“char *”
+C:\Users\20961\Desktop\Cplusplus\四月\Test-bloomfilter\Test-bloomfilter\test.cpp(16,10): message : 从字符串文本转换将丢失 const 限定符(请参阅 /Zc:strictStrings)
+C:\Users\20961\Desktop\Cplusplus\四月\Test-bloomfilter\Test-bloomfilter\test.cpp(18,1): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message : 参见“strcpy”的声明
+C:\Users\20961\Desktop\Cplusplus\四月\Test-bloomfilter\Test-bloomfilter\test.cpp(27,1): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message : 参见“strcpy”的声明
+C:\Users\20961\Desktop\Cplusplus\四月\Test-bloomfilter\Test-bloomfilter\test.cpp(35,1): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message : 参见“strcpy”的声明
+C:\Users\20961\Desktop\Cplusplus\四月\Test-bloomfilter\Test-bloomfilter\test.cpp(45,1): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message : 参见“strcpy”的声明
+C:\Users\20961\Desktop\Cplusplus\四月\Test-bloomfilter\Test-bloomfilter\test.cpp(46,1): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\ucrt\string.h(133): message : 参见“strcpy”的声明
+C:\Users\20961\Desktop\Cplusplus\四月\Test-bloomfilter\Test-bloomfilter\test.cpp(61,20): error C2664: “String::String(const String &)”: 无法将参数 1 从“const char [6]”转换为“char *”
+C:\Users\20961\Desktop\Cplusplus\四月\Test-bloomfilter\Test-bloomfilter\test.cpp(61,12): message : 从字符串文本转换将丢失 const 限定符(请参阅 /Zc:strictStrings)
+C:\Users\20961\Desktop\Cplusplus\四月\Test-bloomfilter\Test-bloomfilter\test.cpp(13,2): message : 参见“String::String”的声明
+C:\Users\20961\Desktop\Cplusplus\四月\Test-bloomfilter\Test-bloomfilter\test.cpp(62,20): error C2664: “String::String(const String &)”: 无法将参数 1 从“const char [6]”转换为“char *”
+C:\Users\20961\Desktop\Cplusplus\四月\Test-bloomfilter\Test-bloomfilter\test.cpp(62,12): message : 从字符串文本转换将丢失 const 限定符(请参阅 /Zc:strictStrings)
+C:\Users\20961\Desktop\Cplusplus\四月\Test-bloomfilter\Test-bloomfilter\test.cpp(13,2): message : 参见“String::String”的声明

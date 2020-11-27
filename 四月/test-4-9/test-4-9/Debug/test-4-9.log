@@ -1,0 +1,4 @@
+﻿  test.cpp
+C:\Users\20961\Desktop\Cplusplus\四月\test-4-9\test-4-9\test.cpp(7,23): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\20961\Desktop\Cplusplus\四月\test-4-9\test-4-9\test.cpp(14,23): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\20961\Desktop\Cplusplus\四月\test-4-9\test-4-9\test.cpp(22): error C4716: “reOrderArray”: 必须返回一个值

@@ -1,0 +1,34 @@
+﻿  datetime.cpp
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(8,21): error C2653: “CDateTime”: 不是类或命名空间名称
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(9,1): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(13,2): error C2065: “_year”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(14,2): error C2065: “_month”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(15,2): error C2065: “_day”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(16,2): error C2065: “_hour”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(17,2): error C2065: “_minute”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(18,2): error C2065: “_second”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(19,1): warning C4508: “CDateTime”: 函数应返回一个值；假定“void”返回类型
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(20,50): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(20,50): error C2143: 语法错误: 缺少“,”(在“&”的前面)
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(22,9): error C2065: “dt”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(22,30): error C2065: “dt”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(22,51): error C2065: “dt”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(22,70): error C2065: “dt”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(22,91): error C2065: “dt”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(22,114): error C2065: “dt”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(26,31): error C2653: “CDateTime”: 不是类或命名空间名称
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(31,2): error C2065: “_year”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(32,2): error C2065: “_month”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(33,2): error C2065: “_day”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(34,2): error C2065: “_hour”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(35,2): error C2065: “_minute”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(36,2): error C2065: “_second”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(38,30): error C2653: “CDateTime”: 不是类或命名空间名称
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\datetime.cpp(45,12): error C2355: “this”: 只能在非静态成员函数或非静态数据成员初始值设定项的内部引用
+  test.cpp
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\test.cpp(9,1): warning C4326: “main”的返回类型应为“int”而非“void”
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\test.cpp(10,2): error C2065: “CDateTime”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\test.cpp(10,12): error C2146: 语法错误: 缺少“;”(在标识符“dt”的前面)
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\test.cpp(10,12): error C2065: “dt”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-12-5\test-12-5\test.cpp(12,2): error C2065: “dt”: 未声明的标识符
+  正在生成代码...

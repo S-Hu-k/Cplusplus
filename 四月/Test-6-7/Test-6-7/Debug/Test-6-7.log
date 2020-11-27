@@ -1,0 +1,12 @@
+﻿  test.cpp
+C:\Users\20961\Desktop\Cplusplus\四月\Test-6-7\Test-6-7\test.cpp(1,1): error C3872: “0x3002”: 此字符不允许在标识符中使用
+C:\Users\20961\Desktop\Cplusplus\四月\Test-6-7\Test-6-7\test.cpp(2,1): error C3872: “0x3002”: 此字符不允许在标识符中使用
+C:\Users\20961\Desktop\Cplusplus\四月\Test-6-7\Test-6-7\test.cpp(3,1): error C3872: “0x3002”: 此字符不允许在标识符中使用
+C:\Users\20961\Desktop\Cplusplus\四月\Test-6-7\Test-6-7\test.cpp(3,1): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+C:\Users\20961\Desktop\Cplusplus\四月\Test-6-7\Test-6-7\test.cpp(2,1): error C2146: 语法错误: 缺少“;”(在标识符“第一行抄送列表，姓名之间用一个逗号隔开。如果姓名中包含空格或逗号，则姓名包含在双引号里。总长度不超过512个字符。”的前面)
+C:\Users\20961\Desktop\Cplusplus\四月\Test-6-7\Test-6-7\test.cpp(5,1): error C3872: “0x201c”: 此字符不允许在标识符中使用
+C:\Users\20961\Desktop\Cplusplus\四月\Test-6-7\Test-6-7\test.cpp(5,1): error C3872: “0x201d”: 此字符不允许在标识符中使用
+C:\Users\20961\Desktop\Cplusplus\四月\Test-6-7\Test-6-7\test.cpp(5,137): error C3873: “0x201d”: 不允许将此字符作为标识符的第一个字符
+C:\Users\20961\Desktop\Cplusplus\四月\Test-6-7\Test-6-7\test.cpp(5,137): error C3872: “0x3002”: 此字符不允许在标识符中使用
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\sal.h(2361,12): error C2143: 语法错误: 缺少“;”(在“{”的前面)
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\sal.h(2361,12): error C2447: “{”: 缺少函数标题(是否是老式的形式表?)

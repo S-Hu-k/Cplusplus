@@ -1,0 +1,10 @@
+﻿  test.cpp
+C:\Users\20961\Desktop\Cplusplus\test-3-29\test-3-29\test.cpp(9,21): error C3861: “max”: 找不到标识符
+C:\Users\20961\Desktop\Cplusplus\test-3-29\test-3-29\test.cpp(17,27): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\20961\Desktop\Cplusplus\test-3-29\test-3-29\test.cpp(20,27): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\20961\Desktop\Cplusplus\test-3-29\test-3-29\test.cpp(24,27): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\20961\Desktop\Cplusplus\test-3-29\test-3-29\test.cpp(25,31): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\20961\Desktop\Cplusplus\test-3-29\test-3-29\test.cpp(27,35): error C3861: “min”: 找不到标识符
+C:\Users\20961\Desktop\Cplusplus\test-3-29\test-3-29\test.cpp(28,31): error C3861: “min”: 找不到标识符
+C:\Users\20961\Desktop\Cplusplus\test-3-29\test-3-29\test.cpp(31,35): error C3861: “min”: 找不到标识符
+C:\Users\20961\Desktop\Cplusplus\test-3-29\test-3-29\test.cpp(32,31): error C3861: “min”: 找不到标识符

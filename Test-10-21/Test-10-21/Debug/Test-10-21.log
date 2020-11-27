@@ -1,0 +1,5 @@
+﻿  test.cpp
+C:\Users\20961\Desktop\Cplusplus\Test-10-21\Test-10-21\test.cpp(24,1): error C3646: “_d1”: 未知重写说明符
+C:\Users\20961\Desktop\Cplusplus\Test-10-21\Test-10-21\test.cpp(24,1): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+C:\Users\20961\Desktop\Cplusplus\Test-10-21\Test-10-21\test.cpp(25,1): error C3646: “_d2”: 未知重写说明符
+C:\Users\20961\Desktop\Cplusplus\Test-10-21\Test-10-21\test.cpp(25,1): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int

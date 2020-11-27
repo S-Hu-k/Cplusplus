@@ -1,0 +1,16 @@
+﻿  test.cpp
+C:\Users\20961\Desktop\Cplusplus\四月\Test-RBTree2\Test-RBTree\test.cpp(306,25): error C2679: 二进制“!=”: 没有找到接受“rb_iterator<Type>”类型的右操作数的运算符(或没有可接受的转换)
+          with
+          [
+              Type=int
+          ]
+C:\Users\20961\Desktop\Cplusplus\四月\Test-RBTree2\Test-RBTree\test.cpp(66,7): message : 可能是“bool rb_iterator<Type>::operator !=(rb_iterator<Type> &)”
+          with
+          [
+              Type=int
+          ]
+C:\Users\20961\Desktop\Cplusplus\四月\Test-RBTree2\Test-RBTree\test.cpp(306,25): message : 尝试匹配参数列表“(rb_iterator<Type>, rb_iterator<Type>)”时
+          with
+          [
+              Type=int
+          ]

@@ -1,0 +1,10 @@
+﻿  test.cpp
+C:\Users\20961\Desktop\Cplusplus\test-2-18\test-2-18\test.cpp(3,8): error C2143: 语法错误: 缺少“;”(在“&”的前面)
+C:\Users\20961\Desktop\Cplusplus\test-2-18\test-2-18\test.cpp(3,8): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+C:\Users\20961\Desktop\Cplusplus\test-2-18\test-2-18\test.cpp(3,30): error C2065: “is”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-2-18\test-2-18\test.cpp(3,34): error C2065: “String”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-2-18\test-2-18\test.cpp(3,42): error C2065: “s1”: 未声明的标识符
+C:\Users\20961\Desktop\Cplusplus\test-2-18\test-2-18\test.cpp(3,44): error C2473: “operator >>”: 看起来像函数定义，但却没有参数列表。
+C:\Users\20961\Desktop\Cplusplus\test-2-18\test-2-18\test.cpp(3,44): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+C:\Users\20961\Desktop\Cplusplus\test-2-18\test-2-18\test.cpp(4,1): error C2448: “>>”: 函数样式初始值设定项类似函数定义
+C:\Users\20961\Desktop\Cplusplus\test-2-18\test-2-18\test.cpp(72,1): fatal error C1004: 发现意外的文件尾

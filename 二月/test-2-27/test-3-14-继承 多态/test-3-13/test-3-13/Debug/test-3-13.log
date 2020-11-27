@@ -1,0 +1,3 @@
+﻿  test.cpp
+C:\Users\20961\Desktop\Cplusplus\test-3-13\test-3-13\test.cpp(37): warning C4715: “getLCA”: 不是所有的控件路径都返回值
+  test-3-13.vcxproj -> C:\Users\20961\Desktop\Cplusplus\test-3-13\Debug\test-3-13.exe

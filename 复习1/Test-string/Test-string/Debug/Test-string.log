@@ -1,0 +1,4 @@
+﻿  test.cpp
+C:\Users\20961\Desktop\Cplusplus\复习1\Test-string\Test-string\test.cpp(15,20): warning C4018: “<”: 有符号/无符号不匹配
+C:\Users\20961\Desktop\Cplusplus\复习1\Test-string\Test-string\test.cpp(19,20): warning C4018: “<”: 有符号/无符号不匹配
+  Test-string.vcxproj -> C:\Users\20961\Desktop\Cplusplus\复习1\Test-string\Debug\Test-string.exe

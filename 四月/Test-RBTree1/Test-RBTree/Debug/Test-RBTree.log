@@ -1,0 +1,6 @@
+﻿  test.cpp
+C:\Users\20961\Desktop\Cplusplus\四月\Test-RBTree\Test-RBTree\test.cpp(34,1): error C2440: “=”: 无法从“int”转换为“Color_Type”
+C:\Users\20961\Desktop\Cplusplus\四月\Test-RBTree\Test-RBTree\test.cpp(34,16): message : 强制转换为枚举类型要求显式强制转换(static_cast、C 样式强制转换或函数样式强制转换)
+C:\Users\20961\Desktop\Cplusplus\四月\Test-RBTree\Test-RBTree\test.cpp(31): message : 在编译 类 模板 成员函数“RBTree<int>::RBTree(void)”时
+C:\Users\20961\Desktop\Cplusplus\四月\Test-RBTree\Test-RBTree\test.cpp(95): message : 查看对正在编译的函数 模板 实例化“RBTree<int>::RBTree(void)”的引用
+C:\Users\20961\Desktop\Cplusplus\四月\Test-RBTree\Test-RBTree\test.cpp(95): message : 查看对正在编译的 类 模板 实例化“RBTree<int>”的引用

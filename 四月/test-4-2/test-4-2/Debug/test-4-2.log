@@ -1,0 +1,3 @@
+﻿  test.cpp
+C:\Users\20961\Desktop\Cplusplus\test-4-2\test-4-2\test.cpp(8,5): error C2601: “oddInOddEvenInEven”: 本地函数定义是非法的
+C:\Users\20961\Desktop\Cplusplus\test-4-2\test-4-2\test.cpp(6): message : 此行有一个“{”没有匹配项

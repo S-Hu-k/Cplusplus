@@ -1,0 +1,3 @@
+﻿  test.cpp
+C:\Users\20961\Desktop\Cplusplus\Test-map-set\Test-map-set\test.cpp(12,1): warning C4326: “main”的返回类型应为“int”而非“void”
+  Test-map-set.vcxproj -> C:\Users\20961\Desktop\Cplusplus\Test-map-set\Debug\Test-map-set.exe

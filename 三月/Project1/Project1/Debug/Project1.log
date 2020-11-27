@@ -1,0 +1,4 @@
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(459,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Project1.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  test.cpp
+C:\Users\20961\Desktop\Cplusplus\Project1\Project1\test.cpp(24,20): warning C4018: “<”: 有符号/无符号不匹配
+  Project1.vcxproj -> C:\Users\20961\Desktop\Cplusplus\Project1\Debug\test-3-12.exe

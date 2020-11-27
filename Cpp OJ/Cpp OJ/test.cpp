@@ -1,4 +1,73 @@
+/*
+字符集合
+题目描述
+输入一个字符串，求出该字符串包含的字符集合
 
+输入描述:
+每组数据输入一个字符串，字符串最大长度为100，且只包含字母，不可能为空串，区分大小写。
+输出描述:
+每组数据一行，按字符串原有的字符顺序，输出字符集合，即重复出现并靠后的字母不输出。
+示例1
+
+输入 复制    abcqweracb
+输出 复制    abcqwer
+
+
+#include "stdio.h"
+#include <math.h>
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+using namespace std;
+
+int main()
+{
+    string str;
+    while (cin >> str)
+    {
+        string ans;
+        unordered_map<char, bool> table;
+        for (auto item : str)
+        {
+            if (table.find(item) == table.end())
+            {
+                table[item] = 1;
+                ans += item;
+            }
+        }
+        cout << ans << endl;
+    }
+    return 0;
+}
+
+
+#include<iostream>
+#include<string>
+#include<vector>
+using namespace std;
+void one(string str)
+{
+    vector<bool> a(256, false);
+    for (int i = 0; i < str.size(); ++i)
+    {
+        if (a[str[i]] == false)
+        {
+            cout << str[i];
+            a[str[i]] = true;
+        }
+    }
+    cout << endl;
+}
+int main()
+{
+    string str;
+    while (cin >> str)
+    {
+        one(str);
+
+    }
+    return 0;
+}
 /*
 分糖果【https://www.nowcoder.com/questionTerminal/02d8d42b197646a5bbd0a98785bb3a34】
 A, B, C三个人是好朋友, 每个人手里都有一些糖果, 我们不知道他们每个人手上具体有多少个糖果, 但是我们知道以下的信息：

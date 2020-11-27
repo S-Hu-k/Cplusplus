@@ -1,0 +1,5 @@
+﻿  test.cpp
+C:\Users\20961\Desktop\Cplusplus\test-3-31\test-3-31\test.cpp(57,4): warning C4101: “a”: 未引用的局部变量
+C:\Users\20961\Desktop\Cplusplus\test-3-31\test-3-31\test.cpp(59,6): warning C4101: “pig”: 未引用的局部变量
+C:\Users\20961\Desktop\Cplusplus\test-3-31\test-3-31\test.cpp(58,6): warning C4101: “dog”: 未引用的局部变量
+  test-3-31.vcxproj -> C:\Users\20961\Desktop\Cplusplus\test-3-31\Debug\test-3-31.exe
