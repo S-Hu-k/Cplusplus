@@ -1,3 +1,144 @@
+
+
+
+/*
+一，题目描述
+
+Fibonacci数列是这样定义的：
+F[0] = 0
+F[1] = 1
+for each i ≥ 2: F[i] = F[i - 1] + F[i - 2]
+1
+2
+3
+4
+因此，Fibonacci数列就形如：0, 1, 1, 2, 3, 5, 8, 13, …，在Fibonacci数列中的数我们称为Fibonacci数。
+给你一个N，你想让其变为一个Fibonacci数，每一步你可以把当前数字X变为X - 1或者X + 1，
+现在给你一个数N求最少需要多少步可以变为Fibonacci数。
+输入描述 :
+
+输入为一个正整数N(1 ≤ N ≤ 1, 000, 000)
+
+输出描述 :
+
+    输出一个最小的步数变为Fibonacci数"
+
+    示例1
+
+    输入
+
+    15
+    1
+    输出
+
+    2
+    1
+    二，程序分析过程
+
+    1.根据题目分析，我们可以得出，就是要在斐波那契数列中找到我们输入进去的值，
+    和数列中的数字，增加或者减少几次可以到输入的值。
+
+    2.所以，根据这个道理，实现起来，就比较简单了，我们可以找到离输入值最近的两个数值，
+    然后将这个值的左边被输入值减找小值，然后大的数值减输入值找到最大值。
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+int main()
+{
+    int N, l = 0, r = 0, f, f0 = 0, f1 = 1;
+    cin >> N;
+    while (1)
+    {
+        f = f0 + f1;
+        f0 = f1;
+        f1 = f;
+        //寻找比f小的数
+        if (f < N)
+            l = N - f;
+        else
+        {
+            //寻找比N大的值
+            r = f - N;
+            break;
+        }
+    }
+    cout << min(l, r) << endl;
+    return 0;
+}
+
+/*
+不要二
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main()
+{
+    int W, H, ret = 0;
+    // 利用vector的二维数组来解决
+    vector<vector<int>> v;
+    cin >> W >> H;
+    // 开辟横排空间
+    v.resize(W);
+    // 开辟列排空间
+    // 先将所有的数字全置为1，最后将不符合的置为0
+    for (auto& e : v)
+    {
+
+        e.resize(H, 1);
+    }
+
+    // 循环遍历所有的数字
+    for (int i = 0; i < W; i++)
+    {
+        for (int j = 0; j < H; j++)
+        {
+            if (v[i][j] == 1)
+            {
+                ret++;
+                // 任意横排或者裂开之间相距2，就可以直接置为0
+                // ret控制最火有多少个蛋糕
+                if ((i + 2) < W)
+                    v[i + 2][j] = 0;
+                if ((j + 2) < H)
+                    v[i][j + 2] = 0;
+            }
+        }
+    }
+    // 打印
+    cout << ret << endl;
+    return 0;
+}
+
+/*
+把字符串转化成整数
+class Solution {
+public:
+    int StrToInt(string str) {
+        int tmp = 0;
+        int f = 1;
+        int len = str.length();
+        for (int i = 0; i < len; i++)
+        {
+            if (str[i] < '0' || str[i] > '9')
+            {
+                if (str[i] == '+')
+                    ;
+                else if (str[i] == '-')
+                    f = -1;
+                else
+                    return 0;
+            }
+            else
+            {
+                tmp = tmp * 10 + (str[i] - '0');
+            }
+        }
+        return tmp * f;
+    }
+
+};
 /*
 字符集合
 题目描述
