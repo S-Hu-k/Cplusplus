@@ -1,3 +1,138 @@
+
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+//根据字典排序
+bool dec_inorder(vector<string>& v, int n)
+{
+        for (unsigned int i = 0; i < v.size() - 1; i++)
+        {
+            if (v[i] > v[i + 1])
+                return false;
+        }
+        return true;
+}
+//根据长度排序
+bool length_inorder(vector<string>& v, int n)
+{
+    for (unsigned int i = 0; i < v.size()-1; ++i)
+    {
+        if (v[i].size() > v[i + 1].size())
+            return false;
+    }
+    return true;
+    
+}
+int mian()
+{
+    int n = 0;
+    string str;
+    cin >> n;
+    vector<string> v;
+    v.resize(n);
+    for (auto& str : v)
+    {
+        cin >> str;
+    }
+    if (length_inorder(v,n) && dec_inorder(v,n))
+        cout << "both" << endl;
+    else if (!length_inorder(v,n) && dec_inorder(v,n))
+        cout << "lexicographically" << endl;
+    else if (length_inorder(v,n) && !dec_inorder(v,n))
+        cout << "lengths" << endl;
+    else
+        cout << "none" << endl;
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+int main()
+{
+    int n = 0;
+    string str;
+    cin >> n;
+    vector<string> v;
+    v.resize(n);
+    for (auto& str : v)
+    {
+        cin >> str;
+    }
+    
+}
+/*
+#include<iostream>
+using namespace std;
+class cla 
+{
+    static int n;
+public:
+    cla()
+    {
+        n++;
+    }
+    ~cla()
+    {
+        n--;
+    }
+    static int get_n() { return n; }
+};
+int cla::n = 0;//静态变量要在类外初始化
+int main()
+{
+    cla* p = new cla;
+    delete p;
+    cout << "n=" << cla::get_n() << endl;
+    return 0;
+}
+
+/*
+#include<iostream>
+#include<vector>
+using namespace std;
+class A
+{
+public:
+    A() :m_ival(0) { test(); }
+    virtual void func() { std::cout << m_ival <<  ' '; }
+    void test() { func(); }
+public:
+    int m_ival;
+};
+class B :public A
+{
+public:
+    B() {
+        test();
+    }
+    virtual void func() { ++m_ival;
+    std::cout << m_ival << ' '; }
+
+};
+int main()
+{
+    A* p = new B;
+    p->test();
+    return 0;
+}
+
 /*
 #include<iostream>
 #include<vector>
