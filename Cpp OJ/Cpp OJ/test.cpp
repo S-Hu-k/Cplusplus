@@ -1,4 +1,112 @@
+/*
+最小公倍数
+题目描述
 
+正整数A和正整数B 的最小公倍数是指 能被A和B整除的最小的正整数值，设计一个算法，求输入A和B的最小公倍数。
+
+输入描述 :
+
+输入两个正整数A和B。
+
+输出描述 :
+
+输出A和B的最小公倍数。
+
+示例1
+
+输入
+5 7
+输出
+35
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int num1, num2;
+    cin >> num1 >> num2;
+    int Mul = num1 * num2;
+
+    while (num2)
+    {
+        int temp = num1 % num2;
+        num1 = num2;
+        num2 = temp;
+    }
+    cout << Mul / num1 << endl;
+}
+    
+/*两种排序方法
+题目描述
+考拉有n个字符串字符串，任意两个字符串长度都是不同的。考拉最近学习到有两种字符串的排序方法： 1.根 据字符串的字典序排序。例如：
+“car” < “carriage” < “cats” < "doggies < “koala”
+    2.根据字符串的长度排序。例如：
+    “car” < “cats” < “koala” < “doggies” < “carriage”
+    考拉想知道自己的这些字符串排列顺序是否满足这两种排序方法，考拉要忙着吃树叶，所以需要你来帮忙验 证。
+
+    输入描述： 输入第一行为字符串个数n(n ≤ 100) 接下来的n行, 每行一个字符串, 字符串长度均小于100，均由小写字母组成
+    输出描述： 如果这些字符串是根据字典序排列而不是根据长度排列输出"lexicographically",
+    如果根据长度排列而不是字典序排列输出"lengths",
+    如果两种方式都符合输出"both"，否则输出"none"
+
+    示例
+    输入 : 3 a aa bbb
+    输出 : both
+
+    解题思路
+    思路很简单，将接受的字符串都放到vector容器中，利用string的operator >= 运算符重载来按ascii比较字符 串，
+    利用string的size来比较字符串的长度
+
+#include <stdlib.h>
+#include <iostream>
+#include <vector>
+#include <string>
+using namespace std;
+
+bool IsE(vector<string> v)   //判断是否按字典排序
+{
+    for (int i = 0; i < v.size() - 1; i++)
+    {
+        if (v[i] > v[i + 1])
+            return false;
+    }
+    return true;
+}
+
+bool IsL(vector<string> v)    //判断是否按长度排序
+{
+    for (int i = 0; i < v.size() - 1; i++)
+    {
+        if (v[i].size() > v[i + 1].size())
+            return false;
+    }
+    return true;
+}
+
+int main()
+{
+    vector<string> v;
+    int n = 0;
+    cin >> n;
+    string s;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> s;
+        v.push_back(s);
+    }
+    if (IsE(v) && IsL(v))
+        cout << "both" << endl;
+    else if (IsE(v) && !IsL(v))
+        cout << "lexicographically" << endl;
+    else if (!IsE(v) && IsL(v))
+        cout << "lengths" << endl;
+    else
+        cout << "none" << endl;
+    system("pause");
+    return 0;
+}
 
 
 /*
