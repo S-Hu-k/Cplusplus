@@ -1,3 +1,120 @@
+
+/* 密码强度
+
+#include<iostream>
+#include<algorithm>
+#include<string>
+using namespace std;
+int main()
+{
+    long score = 0;
+    string str;
+    getline(cin, str);
+
+    if (str.size() <= 4)
+        score += 5;
+    else if (str.size() > 5 && str.size() < 7)
+        score += 10;
+    else if (str.size() >= 8)
+        score += 25;
+    int c1 = 0, c2 = 0, c3 = 0, c4 = 0;
+    for (int i = 0; i < str.size(); ++i)
+    {
+        if (str[i] >= 'a' && str[i] <= 'z')
+            c1++;
+        if (str[i] >= 'A' && str[i] <= 'Z')
+            c2++;
+        if (str[i] >= '0' && str[i] <= '9')
+            c3++;
+        if ((str[i] >= 0x21 && str[i] <= 0x2F) ||
+            (str[i] >= 0x3A && str[i] <= 0x40) ||
+            (str[i] >= 0x5B && str[i] <= 0x60) ||
+            (str[i] >= 0x7B && str[i] <= 0x7E))
+            c4++;
+    }
+    if (c1 == 0 && c2 == 0)
+        score += 0;
+    else if ((c1 != 0 && c2 == 0) || (c1 == 0 && c2 != 0))
+        score += 10;
+    else if (c1 != 0 && c2 != 0)
+        score += 25;
+
+    if (c3 == 0)
+        score += 0;
+    else if (c3 == 1)
+        score += 10;
+    else if (c3 > 1)
+        score += 20;
+
+    if (c4 == 0)
+        score += 0;
+    else if (c4 == 1)
+        score += 10;
+    else if (c4 > 1)
+        score += 25;
+
+    if ((c1 != 0 && c2 != 0) && c3 != 0 && c4 != 0)
+        score += 5;
+    else if (((c1 != 0 && c2 == 0) || (c1 == 0 && c2 != 0)) && c3 != 0 && c4 != 0)
+        score += 3;
+    else if (c4 == 0 && c3 != 0 &&
+        ((c1 != 0 && c2 == 0) || (c1 == 0 && c2 != 0)))
+        score += 2;
+
+
+
+    if (score >= 90)
+        cout << "VERY_SECURE" << endl;
+    else if (score >= 80)
+        cout << "SECURE" << endl;
+    else if (score >= 70)
+        cout << "VERY_STRONG" << endl;
+    else if (score >= 60)
+        cout << "STRONG" << endl;
+    else if (score >= 50)
+        cout << "AVERAGE" << endl;
+    else if (score >= 25)
+        cout << "WEAK" << endl;
+    else
+        cout << "VERY_WEAK" << endl;
+
+    return 0;
+
+
+}
+/*
+【题目描述】请编写一个函数（允许增加子函数），计算n x m的棋盘格子（n为横向的格子数，m为竖向的格子数）
+沿着各自边缘线从左上角走到右下角，总共有多少种走法，要求不能走回头路，即：只能往右和往下走，不能往左和往上走。
+【输入描述】
+输入两个正整数
+
+【输出描述】
+返回结果
+
+示例1
+【输入】
+2
+2
+【输出】
+6
+#include<iostream>
+using namespace std;
+int PathNum(int n, int m)
+{
+    if (n > 1 && m > 1)
+        return PathNum(n - 1, m) + PathNum(n, m - 1);
+    else if (((n == 1) && (m >= 1)) || ((n >= 1) && (m == 1)))
+        return n + m;
+    else //格子数为0，直接返回0
+        return 0;
+}
+int main()
+{
+    int n, m;
+    while (cin >> n >> m)
+        cout << PathNum(n, m) << endl;
+    return 0;
+}
 /*
 最小公倍数
 题目描述
