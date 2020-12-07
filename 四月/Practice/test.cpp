@@ -1,4 +1,207 @@
 
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    int count = 0;
+    string str;
+    while (getline(cin, str))
+    {
+        for (int i = 0; i < str.size(); ++i)
+        {
+            if (str[i] == ' ')
+                count++;
+            if(str[i]=='"')
+                do
+                {
+                    i++;
+                } while (str[i] != '"');
+        }
+        cout << count + 1 << endl;
+
+    }
+}
+
+
+/*
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    string str;
+    while (getline(cin, str))
+    {
+        // 计数空格的数量
+        int count = 0;
+        for (int i = 0; i < str.size(); i++)
+        {
+            if (str[i] == ' ')
+                count++;
+            if (str[i] == '"')
+            {
+                do {
+                    i++;
+                } while (str[i] != '"');
+            }
+        }
+        // 参数的个数一定比空格多1
+        cout << count + 1 << endl;
+
+        int flag = 1;
+        for (int i = 0; i < str.size(); i++)
+        {
+            // 如果是“的话就flag置为0
+            if (str[i] == '"')
+                flag ^= 1;
+
+            // 不是空格和双引号直接打印
+            if (str[i] != ' ' && str[i] != '"')
+                cout << str[i];
+
+            // 不在双引号内的空格直接换行
+            if (str[i] == ' ' && (flag))
+                cout << ' ' << endl;
+
+            // 双引号内的空格直接打印
+            if (str[i] == ' ' && (!flag))
+                cout << str[i];
+        }
+    }
+    cout << endl;
+    return 0;
+}
+
+
+/*
+#include<iostream>
+#include<vector>
+#include<string>
+using namespace std;
+int main()
+{
+    string str;
+    vector<string> str;
+    while (getline(cin, str))
+    {
+
+    }
+
+}
+
+/*
+#include<iostream>
+#include<algorithm>
+#include<string>
+using namespace std;
+class b
+{
+public:
+    b()
+    {
+        cout << " default construct" << " ";
+    }
+    ~b()
+    {
+        cout << "desstruct" << " ";
+    }
+    b(int i) :data(i)
+    {
+        cout << "constructed by parameter" << data << " ";
+    }
+private:
+    int data;
+};
+b Play(b  B)
+{
+    return  B;
+}int main()
+{
+    b temp = Play(5);
+    return 0;
+}
+
+
+
+
+/*
+#include<iostream>
+#include<algorithm>
+#include<string>
+using namespace std;
+class A
+{
+public:
+    virtual void print()
+    {
+        cout << "a::print()" << endl;
+    }
+};
+class B :public A
+{
+public:
+    virtual void print()
+    {
+        cout << "b::print()" << endl;
+    }
+};
+class C :public A
+{
+public:
+    virtual void print()
+    {
+        cout << "c::print()" << endl;
+    }
+};
+void print(A a)
+{
+    a.print();
+}
+int main()
+{
+    A a, * aa, * ab, * ac;
+    B b;
+    C c;
+    aa = &a;
+    ab = &b;
+    ac = &c;
+    a.print();
+    b.print();
+    c.print();
+    aa->print();
+    ab->print();
+    ac->print();
+    print(a);
+    print(b);
+    print(c);
+}
+/*
+
+#include<iostream>
+#include<algorithm>
+#include<string>
+using namespace std;
+int main()
+{
+    int i, a[10];
+    for (i = 9; i >= 0; --i)
+    {
+        a[i] = 10 - i;
+        
+    }
+    printf("%d%d%d", a[2], a[5], a[8]);
+    return 0;
+}
+
+
+
+
+/*
+
 #include<iostream>
 #include<algorithm>
 #include<string>
@@ -80,32 +283,6 @@ int main()
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*
