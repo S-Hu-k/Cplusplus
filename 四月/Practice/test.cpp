@@ -1,5 +1,141 @@
 
+#include<iostream>
+#include<vector>
+using namespace std;
+bool isleepyear(int y)
+{
+    if ((y % 4 == 0 && y % 100 == 0) || (y % 400 == 0))
+        return true;
+    else
+        return false;
+}
+int main()
+{
+    int sum = 0;
+    int year = 0;
+    int mouth = 0;
+    int day = 0;
+    
+    while (cin >>year>>mouth>>day)
+    {
+        if (mouth > 2)
+        {
+            if (isleepyear(year))
+            {
+                int x2 = mouth / 2;
+                sum = x2 * 31 * (x2 - 1) * 30 + 29 + day;
 
+            }
+            else
+            {
+                int x2 = mouth / 2;
+                sum = x2 * 31 * (x2 - 1) * 30 + 28 + day;
+            }
+            return sum;
+        }
+        if (mouth == 1)
+            sum=  day;
+        return sum;
+        if (mouth == 2)
+        {
+            if (isleepyear(year))
+                 sum=31 + day;
+            return sum;
+        }
+        
+    }
+   cout << sum << endl;
+    return 0;
+}
+
+/*
+#include<iostream>
+using namespace std;
+class a
+{
+public:
+    int getvalue()const {
+        vv = 1;
+        return vv;
+    }
+private:
+    mutable int  vv;
+};
+/*
+class base
+{
+public:
+    base(int j):i(j)
+    {}
+    virtual ~base()
+    {}
+    void func1()
+    {
+        i *= 10;
+        func2();
+    }
+    int getvalue()
+    {
+        return i;
+    }
+protected:
+    int i;
+};
+class child :public base
+{
+public:
+    child(int j):base(j)
+    {}
+    void func1()
+    {
+        i *= 100;
+        func2();
+    }
+protected:
+    void func2()
+    {
+        i += 2;
+    }
+};
+int main()
+{
+    base* pb = new child(1);
+    pb->func1();
+    cout << pb->getvalue() << endl;
+    delete pb;
+}
+
+/*
+#include<iostream>
+using namespace std;
+int main()
+{
+    char str[] = "glad to test something";
+    char* p = str;
+    p++;
+    int* p1 = reinterpret_cast<int*>(p);
+    p1++;
+    p = reinterpret_cast<char*>(p1);
+    cout << p << endl;
+}
+/*
+#include<iostream>
+using namespace std;
+
+int function(unsigned int n)
+{
+    n = (n & 0x55555555) + ((n >> 1) & 0x55555555);
+    n = (n & 0x33333333) + ((n >> 2) & 0x33333333);
+    n = (n & 0x0f0f0f0f) + ((n >> 4) & 0x0f0f0f0f);
+    n = (n & 0x00ff00ff) + ((n >> 8) & 0x00ff00ff);
+    n = (n & 0x0000ffff) + ((n >> 16) & 0x0000ffff);
+    return n;
+}
+int main()
+{
+    cout << function(197) << endl;
+}
+/*
 #include <iostream>
 #include <string>
 using namespace std;

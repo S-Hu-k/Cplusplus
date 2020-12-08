@@ -1,10 +1,2 @@
 ﻿  test.cpp
-C:\Users\20961\Desktop\Cplusplus\四月\Practice\test.cpp(8,5): error C2672: “getline”: 未找到匹配的重载函数
-C:\Users\20961\Desktop\Cplusplus\四月\Practice\test.cpp(8,20): error C2784: “std::basic_istream<_Elem,_Traits> &std::getline(std::basic_istream<_Elem,_Traits> &,std::basic_string<_Elem,_Traits,_Alloc> &)”: 未能从“std::vector<std::string,std::allocator<std::string>>”为“std::basic_string<_Elem,_Traits,_Alloc> &”推导 模板 参数
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\string(82): message : 参见“std::getline”的声明
-C:\Users\20961\Desktop\Cplusplus\四月\Practice\test.cpp(8,20): error C2780: “std::basic_istream<_Elem,_Traits> &std::getline(std::basic_istream<_Elem,_Traits> &,std::basic_string<_Elem,_Traits,_Alloc> &,const _Elem)”: 应输入 3 个参数，却提供了 2 个
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\string(76): message : 参见“std::getline”的声明
-C:\Users\20961\Desktop\Cplusplus\四月\Practice\test.cpp(8,20): error C2784: “std::basic_istream<_Elem,_Traits> &std::getline(std::basic_istream<_Elem,_Traits> &&,std::basic_string<_Elem,_Traits,_Alloc> &)”: 未能从“std::vector<std::string,std::allocator<std::string>>”为“std::basic_string<_Elem,_Traits,_Alloc> &”推导 模板 参数
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\string(70): message : 参见“std::getline”的声明
-C:\Users\20961\Desktop\Cplusplus\四月\Practice\test.cpp(8,20): error C2780: “std::basic_istream<_Elem,_Traits> &std::getline(std::basic_istream<_Elem,_Traits> &&,std::basic_string<_Elem,_Traits,_Alloc> &,const _Elem)”: 应输入 3 个参数，却提供了 2 个
-C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.24.28314\include\string(27): message : 参见“std::getline”的声明
+  Practice.vcxproj -> C:\Users\20961\Desktop\Cplusplus\四月\Practice\Debug\Practice.exe
