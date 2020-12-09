@@ -1,4 +1,67 @@
 
+/********************************************************************************************************************/
+/*一个数的二进制中的一的个数*/
+using namespace std;
+
+int f(int x) {
+    int n = 0;
+    while (x) {
+        n++;
+        x &= x - 1;
+    }
+    return n;
+}
+
+int main() {
+    cout << f(26) << endl;
+    return 0;
+}
+/* ------------------------------------------------------------- */
+
+#include<stdio.h>
+int Number(unsigned int num)
+{
+    int tmp, count = 0;
+    while (num != 0)
+    {
+        tmp = num & 1;
+        if (tmp == 1)
+            count++;
+        num = num >> 1;
+    }
+    return count;
+}
+int main()
+{
+    int num = -1;
+    int n = Number(num);
+    printf("%d\n", n);
+    return 0;
+}
+
+/* ------------------------------------------------------------- */
+#include<stdio.h>
+int Number(unsigned int num)
+{
+    int tmp, count = 0;
+    while (num != 0)
+    {
+        tmp = num % 2;
+        num = num / 2;
+        if (tmp == 1)
+            count++;
+    }
+    return count;
+}
+int main()
+{
+    int num = -1;
+    int n = Number(num);
+    printf("%d\n", n);
+    system("pause");
+    return 0;
+}
+
 
 /********************************************************************************************************************/
 

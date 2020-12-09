@@ -2,6 +2,137 @@
 #include<iostream>
 #include<vector>
 using namespace std;
+
+int findsubstring(char* pch)
+{
+    int count = 0;
+    char* p1 = pch;
+    while (*p1 != '\0')
+    {
+        if (*p1 == p1[1] - 1)
+        {
+            p1++;
+            count++;
+        }
+        else
+        {
+            break;
+        }
+    }int count2 = count;
+    while (*p1 != '\0')
+    {
+        if (*p1 == p1[1] + 1)
+        {
+            p1++;
+            count2--;
+        }
+        else
+        {
+            break;
+        }
+
+    }
+    if (count2 == 0)
+        return count;
+    return 0;
+}
+void modifystring(char* ptext)
+{
+    char* p1 = ptext;
+    char* p2 = p1;
+    while (*p1 != '\0')
+    {
+        int count = findsubstring(p1);
+        if (count > 0)
+        {
+            *p2++ = *p1;
+            printf(p2, "%i", count);
+            while (*p2 != '\0')
+            {
+                p2++;
+            }
+            p1 += count + count + 1;
+        }
+        else
+        {
+            *p2++ = *p1++;
+        }
+    }
+}
+int main()
+{
+    char test[32] = "XYBCDCBABABA";
+    modifystring(test);
+    printf(test);
+}
+/*
+class A
+{
+public:
+    A()
+    {
+        printf("A ");
+    }
+    ~A()
+    {
+        printf("dea");
+    }
+};
+class B
+{
+public:
+    B()
+    {
+        printf("B ");
+    }
+    ~B()
+    {
+        printf("deB");
+    }
+};
+class C :public A,public B
+{
+public:
+    C()
+    {
+        printf("C ");
+    }
+    ~C()
+    {
+        printf("deC");
+    }
+};
+int main()
+{
+    A* a = new C();
+    delete a;
+    return 0;
+ }
+/*
+class a
+{
+public:
+    void f()
+    {
+        printf("a\n");
+    }
+};
+class b :public a
+{
+public:
+    virtual void f()
+    {
+        printf("b\n");
+    }
+};
+int main()
+{
+    a* A = new b;
+    A->f();
+    delete A;
+    return 0;
+}
+/*
 bool isleepyear(int y)
 {
     if ((y % 4 == 0 && y % 100 == 0) || (y % 400 == 0))
