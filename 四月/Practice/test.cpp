@@ -1,8 +1,251 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+    string addend;
+    string augend;
+    string sum;
+    while (cin >> addend >> augend)
+    {
+        for (int i = addend.size() - 1; i != 0; --i)
+        {
+            for (int j = augend.size() - 1; j != 0; --j)
+            {
+                while (j == 0 || i == 0)
+                {
+                    sum = augend[j] + addend[i];
+                }
+            }
+        }
+        
+    }
+    cout << sum << endl;
+}
+/*#include<iostream>
+using namespace std;
+int main()
+{
+    char* ptr;
+    char mystring[] = "abcdefg";
+    ptr = mystring;
+    ptr += 5;
+    cout << *ptr << endl;
+}
+/*class a
+{
+public:
+    ~a()
+    {
+        cout << "~a" << endl;
+    }
+}; class b
+{
+public:
+   virtual ~b()
+    {
+        cout << "~b" << endl;
+    }
+};
+class c:public a,public b
+{
+public:
+    ~c()
+    {
+        cout << "~c" << endl;
+    }
+};
+int main()
+{
+    c* C = new c;
+    b* b1 = dynamic_cast<b*>(C);
+    a* a2 = dynamic_cast<a*>(b1);
+    delete a2;
+}
+/**
+int main()
+{
+char* p = "abc";
+char* q = "abc123";
+while (*p = *q)
+{
+    printf("%c %c", *p, *q);
+}
+}
 
+/*class a
+{
+public:
+    a()
+    {
+        p();
+    }
+    virtual void p()
+    {
+        printf("a");
+    }
+    virtual ~a()
+    {
+        p();
+    }
+};
+class b:public a
+{
+public:
+   b()
+    {
+        p();
+    }
+    virtual void p()
+    {
+        printf("b");
+    }
+    virtual ~b()
+    {
+        p();
+    }
+};
+int main()
+{
+    a* A = new b();
+    delete A;
+}
+/*
+int main()
+{
+    int a[] = { 1,2,3,4,5 };
+    int* p[] = { a,a + 1,a + 2,a + 3 };
+    int** q = p;
+    cout << *(p[0] + 1) + **(q + 2) << endl;
+    return 0;
+}
+/*template<class T>
+struct sum
+{
+    static void foo(T op1, T op2)
+        cout << op1 << op2;
+};
+int main()
+{
+    sum<int>::foo(1, 3);
+}
+
+/*
+#include<iostream>
+using namespace std;
+bool judgeperfect(int x)
+{
+    if (x < 0 || x>500000)
+        return -1;
+    int sum = 0;
+    for (int i = 1; i < x; ++i)
+    {
+        if (x % i == 0)
+            sum += i;
+    }
+    if (sum == x)
+        return true;
+    else
+        return false;
+}
+int main()
+{
+    int a = 0;
+    cin >> a;
+    int count = 0;
+    for (int j = 1; j < a; ++j)
+    {
+        if (judgeperfect(j) == true)
+            count++;
+    }
+    cout << count << endl;
+    return 0;
+}
+/*
 #include<iostream>
 #include<vector>
 using namespace std;
+class base
+{
+public:
+    virtual int foo(int x)
+    {
+        return x * 10;
+    }
+    int foo(char x[14])
+    {
+        return sizeof(x) + 10;
+    }
+};
+class derived :public base
+{
+    int foo(int x)
+    {
+        return x * 20;
+    }
+    virtual int foo(char x[10])
+    {
+        return sizeof(x) + 20;
+    }
+};
+int main()
+{
+    derived stdervied;
+    base* pstbase = &stdervied;
 
+    char x[10];
+    printf("%d", pstbase->foo(100) + pstbase->foo(x));
+    return 0;
+}
+/*
+class a
+{
+public:
+    void funca()
+    {
+        printf("funca called");
+
+    }
+    virtual void funcb()
+    {
+        printf("funcb called");
+    }
+};
+class b :public a
+{
+    void funca()
+    {
+        a::funca();
+        printf("funcab called");
+    }
+    virtual void funcb()
+    {
+        printf("funcbb called");
+    }
+};
+void main()
+{
+    b B;
+    a* pa;
+    pa = &B;
+    a* pa2 = new a;
+    pa->funca();
+    pa->funcb();
+    pa2->funca();
+    pa2->funcb();
+    delete pa2;
+}
+/*
+int main()
+{
+    const int a = 10;
+    int* p = (int*)(&a);
+    *p = 20;
+    cout << a << endl;
+    cout << *p << endl;
+    return 0;
+}
+/*
 int findsubstring(char* pch)
 {
     int count = 0;
