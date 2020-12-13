@@ -1,7 +1,37 @@
 #include<iostream>
 #include<string>
 using namespace std;
+class a
+{
+public:
+    void print()
+    {
+        cout << "a ::print";
+    }
+};
+class b :private a
+{
+public:
+    void print()
+    {
+        cout << "b ::print";
+    }
+};
+class c :public b
+{
+public:
+    void print()
+    {
+        a::print()
+            ;
+    }
+};
 int main()
+{
+    c n;
+    n.print();
+}
+/*int main()
 {
     string addend;
     string augend;

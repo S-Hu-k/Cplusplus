@@ -1,2 +1,5 @@
 ﻿  test.cpp
-  Practice.vcxproj -> C:\Users\20961\Desktop\Cplusplus\四月\Practice\Debug\Practice.exe
+C:\Users\20961\Desktop\Cplusplus\四月\Practice\test.cpp(25,1): error C2247: “a::print”不可访问，因为“b”使用“private”从“a”继承
+C:\Users\20961\Desktop\Cplusplus\四月\Practice\test.cpp(7): message : 参见“a::print”的声明
+C:\Users\20961\Desktop\Cplusplus\四月\Practice\test.cpp(12): message : 参见“b”的声明
+C:\Users\20961\Desktop\Cplusplus\四月\Practice\test.cpp(4): message : 参见“a”的声明
