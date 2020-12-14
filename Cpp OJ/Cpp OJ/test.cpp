@@ -1,4 +1,46 @@
 
+
+/********************************************************************************************************************/
+
+/*通配字符串*/
+#include<iostream>
+#include<string>
+using namespace std;
+bool judge(const char* yzf, const char* ppzf)
+{
+    if (*yzf == '\0' && *ppzf == '\0')
+        return true;
+    if (*yzf == '\0' || *ppzf == '\0')
+        return false;
+    if (*yzf == '?') {
+        // ? 匹配一个字符，直接跳过一个位置
+        return judge(yzf + 1, ppzf + 1);
+    }
+    else if (*yzf == '*') {
+        // * 匹配0个字符，或者匹配一个字符，或者匹配大于一个字符，一个为真即为真
+        return judge(yzf + 1, ppzf) || judge(yzf + 1, ppzf + 1) || judge(yzf, ppzf + 1);
+    }
+    else if (*yzf == *ppzf) {
+        // 当前字符相等，匹配下一个字符
+        return judge(yzf + 1, ppzf + 1);
+    }
+    return false;
+}
+int main()
+{
+    string yzf;
+    string ppzf;
+    while (cin >> yzf >> ppzf)
+    {
+        if (judge(yzf.c_str(), ppzf.c_str()))
+        {
+            cout << "true" << endl;
+        }
+        else
+            cout << "false" << endl;
+    }
+}
+
 /********************************************************************************************************************/
 /*完全数*/
 完全数（Perfect number），又称完美数或完备数，是一些特殊的自然数。
