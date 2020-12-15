@@ -1,5 +1,59 @@
-
-
+/********************************************************************************************************************/
+/*密码验证合格程序*/
+#include <iostream>
+#include <string>
+using namespace std;
+int sum(int a[4]) {
+    int ans = 0;
+    for (int j = 0; j < 4; j++) {
+        ans += a[j];
+    }
+    return ans;
+}
+int main() {
+    string s;
+    while (cin >> s) {
+        int buf[100];
+        bool is_ok = true;
+        int buf_num = 0;
+        int is_full[4] = { 0,0,0,0 };
+        int s_l = s.length();
+        for (int i = 0; i < s_l; i++) {
+            buf[buf_num++] = s[i];
+            if (s[i] >= '0' && s[i] <= '9') {
+                is_full[0] = 1;
+            }
+            else if (s[i] >= 'a' && s[i] <= 'z') {
+                is_full[1] = 1;
+            }
+            else if (s[i] >= 'A' && s[i] <= 'Z') {
+                is_full[2] = 1;
+            }
+            else {
+                is_full[3] = 1;
+            }
+        }
+        if (sum(is_full) < 3 || s_l <= 8) {
+            is_ok = false;
+        }
+        else if (sum(is_full) >= 3 && s_l > 8) {
+            for (int i = 0; i < buf_num - 3; i++) {
+                for (int j = i + 1; j < buf_num; j++) {
+                    if (buf[i] == buf[j] && buf[i + 1] == buf[j + 1] && buf[i + 2] == buf[j + 2]) {
+                        is_ok = false;
+                    }
+                }
+            }
+        }
+        if (is_ok == false) {
+            cout << "NG" << endl;
+        }
+        else {
+            cout << "OK" << endl;
+        }
+    }
+    return 0;
+}
 /********************************************************************************************************************/
 
 /*通配字符串*/
