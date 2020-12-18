@@ -1,3 +1,60 @@
+
+//https://www.nowcoder.com/practice/6c9d8d2e426c4c58bbadfdf67d591696?tpId=137&rp=1&ru=%2Fta%2Fexam-bytedance&qru=%2Fta%2Fexam-bytedance%2Fquestion-ranking
+//将字典序视作一个树，寻找m次则循环m次来找寻结果
+//如果在这个区间内则M在这个区间内查找，否则让梯度乘以10向上查找，知道找寻一个区间内，让i+1一个一个查找
+//第一步while循环是判断是否查到这个位置，第二次则是写出num在这个区间内有多少个数
+//本题不用构造一颗字典序树，却用到树的概念
+//以十个十个数为区间计算
+//此上均是自己的一点看法，本人不才，望指教
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int main()
+{
+    long n, m;
+    cin >> n >> m;
+    long i = 1;
+    m--;
+    while (m != 0) {
+        long start = i, end = i + 1;
+        long num = 0;
+        while (start <= n)
+        {
+            num += min(n + 1, end) - start;
+            start *= 10;
+            end *= 10;
+        }
+        if (num > m)
+        {
+            i *= 10;
+            m--;
+        }
+        else
+        {
+            m -= num;
+            i++;
+        }
+    }
+    cout << i << endl;
+    return 0;
+}
+//【把200个数按照字典输出】
+//#include<iostream>
+//#include<vector>
+//using namespace std;
+//int main()
+//{
+//    unsigned int n = 0;
+//    while (cin >> n)
+//    {
+//
+//    }
+//}
+//
+
+/*
 #include<iostream>
 #include<string>
 using namespace std;
