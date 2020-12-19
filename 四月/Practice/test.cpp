@@ -1,4 +1,25 @@
+public class Solution {
+    public ListNode FindKthToTail(ListNode head, int k) {
 
+        if (k <= 0)
+            return null;
+        ListNode low = head;//倒数第k个节点
+        ListNode fast = head;
+        for (int i = 1; i < k; i++) {
+            if (fast == null)
+                return null;
+            else
+                fast = fast.next;
+        }
+        if (fast == null)
+            return null;
+        while (fast.next != null) {
+            low = low.next;
+            fast = fast.next;
+        }
+        return low;
+    }
+}
 //https://www.nowcoder.com/practice/6c9d8d2e426c4c58bbadfdf67d591696?tpId=137&rp=1&ru=%2Fta%2Fexam-bytedance&qru=%2Fta%2Fexam-bytedance%2Fquestion-ranking
 //将字典序视作一个树，寻找m次则循环m次来找寻结果
 //如果在这个区间内则M在这个区间内查找，否则让梯度乘以10向上查找，知道找寻一个区间内，让i+1一个一个查找
