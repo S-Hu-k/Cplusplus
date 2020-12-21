@@ -1,3 +1,56 @@
+
+
+/********************************************************************************************************************/
+
+
+//单词搜索
+//给定一个二维网格和一个单词，找出该单词是否存在于网格中。
+//
+//单词必须按照字母顺序，通过相邻的单元格内的字母构成，其中“相邻”
+//单元格是那些水平相邻或垂直相邻的单元格。同一个单元格内的字母不允许被重复使用。
+//
+//示例 :
+//
+//board =
+//[
+//    ['A', 'B', 'C', 'E'],
+//    ['S', 'F', 'C', 'S'],
+//    ['A', 'D', 'E', 'E']
+//]
+//
+//给定 word = "ABCCED", 返回 true.
+//给定 word = "SEE", 返回 true.
+//给定 word = "ABCB", 返回 false.
+class Solution {
+public:
+    bool search(vector<vector<char>>& board, string word, int i, int j, int pos) {
+        if (pos == word.size())
+            return true;
+        if (i < 0 || j < 0 || i >= board.size() || j >= board[i].size())
+            return false;
+        if (word[pos] != board[i][j])
+            return false;
+        char temp = board[i][j];
+        board[i][j] = '.';
+        bool result = search(board, word, i + 1, j, pos + 1) || 
+            search(board, word, i - 1, j, pos + 1) || search(board, word, i, j - 1, pos + 1) ||
+            search(board, word, i, j + 1, pos + 1);
+        board[i][j] = temp;
+        return result;
+    }
+
+    bool exist(vector<vector<char>>& board, string word) {
+        for (int i = 0; i < board.size(); i++) {
+            for (int j = 0; j < board[i].size(); j++) {
+                if (search(board, word, i, j, 0))
+                    return true;
+            }
+        }
+        return false;
+    }
+};
+
+
 /********************************************************************************************************************/
 Z国的货币系统包含面值1元、4元、16元、64元共计4种硬币，以及面值1024元的纸币。【字节跳动】
 现在小Y使用1024元的纸币购买了一件价值为N(0 < N \le 1024)N(0 < N≤1024)的商品，
