@@ -1,6 +1,105 @@
 
 
 /********************************************************************************************************************/
+年终奖
+
+class Bonus {
+public:
+    int getMost(vector<vector<int> > board) {
+        int length = board.size();
+        int wideth = board[0].size();
+        vector<vector<int>> allPrice;
+        for (int i = 0; i < length; i++) {
+            vector<int> tmp(wideth, 0);
+            allPrice.push_back(tmp);
+        }
+        allPrice[0][0] = board[0][0];
+        for (int i = 0; i < length; i++) {
+            for (int j = 0; j < wideth; j++) {
+                //如果是起点坐标，不做任何处理。                
+                if (i == 0 && j == 0) {
+                    continue;
+                }
+                //如果走在行的临界边，也就是第一行，那么他只能向右走             
+                //向右走的时候该点就要将后面的值加起来。
+                else if (i == 0) {
+                    allPrice[i][j] = allPrice[i][j - 1] + board[i][j];
+                }
+                //如果走在列的临界边，也就是第一列，那么他只能向下走             
+                //向下走的时候该点就要将上面的值加起来。                
+                else if (j == 0) {
+                    allPrice[i][j] = allPrice[i - 1][j] + board[i][j];
+                }
+                else {
+                    //除去两个临界边，剩下的就是既能向右走，也能向下走，                 
+                    //这时候就要考虑走到当前点的所有可能得情况，也就是走到当前点                 
+                    //各自路径的和是不是这些所有到达该点路径当中最大的了。                    
+                    allPrice[i][j] = max(allPrice[i][j - 1], allPrice[i - 1][j]) +
+                        board[i][j];
+                }
+            }
+        }
+        // 返回最后一个坐标点的值，它就表示从左上角走到右下角的最大奖励        
+        return allPrice[length - 1][wideth - 1];
+    }
+};
+/********************************************************************************************************************/
+迷宫问题   回溯算法
+
+#include <string.h>
+
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int maze[10][10];
+int flag = 0;
+
+int DRV_SearchMaze(int max_line, int max_col, int line, int col)
+{
+    if (flag)
+    {
+        return 0;
+    }
+    if (line == (max_line - 1) && col == (max_col - 1))  //是否到达迷宫边界
+    {
+        printf("(%d,%d)\n", line, col);
+        flag = 1;
+        return 0;
+    }
+    if ((col + 1 < max_col) && (maze[line][col + 1] == 0))//判断行上是否满足
+    {
+        printf("(%d,%d)\n", line, col);
+        DRV_SearchMaze(max_line, max_col, line, col + 1);   //递归
+    }
+    if ((line + 1 < max_line) && (maze[line + 1][col] == 0))//判断列上是否满足
+    {
+        if (flag == 0)
+        {
+            printf("(%d,%d)\n", line, col);
+            DRV_SearchMaze(max_line, max_col, line + 1, col);//递归
+        }
+    }
+    return 0;
+}
+int main()
+{
+    int line, col;
+    int i, j;
+    while (~scanf("%d %d", &line, &col))
+    {
+        flag = 0;
+        for (i = 0; i < line; i++)
+        {
+            for (j = 0; j < col; j++)
+                scanf("%d", &maze[i][j]);
+        }
+        DRV_SearchMaze(line, col, 0, 0);
+    }
+    return 0;
+}
+
+/********************************************************************************************************************/
 
 MP3光标位置
 
