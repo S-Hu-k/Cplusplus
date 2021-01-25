@@ -1,5 +1,36 @@
+/********************************************************************************************************************/
+Ê÷¸ù
+#include<iostream>
+using namespace std;
+int shugen(int number)
+{
+    int sum = 0;
+    if (number == 0)
+        return 0;
+    if (number)
+    {
+        sum += number % 10 + number / 10;
+    }
+    if (sum > 9)
+        return shugen(sum);
+    else
+        return sum;
 
-
+}
+int main()
+{
+    string n;
+    while (cin >> n)
+    {
+        int b = 0;
+        for (int i = 0; i < n.size(); ++i)
+        {
+            b += n[i] - '0';
+        }
+        cout << shugen(b) << endl;
+    }
+    return 0;
+}
 /********************************************************************************************************************/
 ÄêÖÕ½±
 
