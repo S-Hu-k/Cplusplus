@@ -1,3 +1,70 @@
+猴子分桃
+
+
+
+#include<iostream>
+#include<math.h>
+
+using namespace std;
+
+int main()
+{
+    int n = 0;
+    while (cin >> n)
+    {
+        long a = 0, b = 0;
+        if (n == 0)
+            break;
+        else
+        {
+            a = pow(5.0, n) - 4; // 5的20次方数值超过int的大小
+            b = pow(4.0, n) + n - 4;
+        }
+        cout << a << " " << b << endl;
+    }
+    return 0;
+}
+
+
+
+
+class Solution {
+public:
+    /**
+     *  奇数位上都是奇数或者偶数位上都是偶数
+     *  输入：数组arr，长度大于2
+     *  len：arr的长度
+     *  将arr调整成奇数位上都是奇数或者偶数位上都是偶数
+     */
+    void oddInOddEvenInEven(vector<int>& arr, int len)
+    {
+        int i = 0, j = 1;
+        while (i < len && j < len)
+        {
+            if ((arr[i] & 1) == 0) //偶数位上寻找非偶数，否则跳过
+            {
+                i += 2;
+                continue;
+            }
+            if ((arr[j] & 1) == 1) //奇数位上寻找非奇数，否则跳过
+            {
+                j += 2;
+                continue;
+            }
+            swap(arr[i], arr[j]);
+            i += 2;
+            j += 2;
+        }
+
+
+    }
+};
+
+
+
+
+
+
 #include<iostream>
 using namespace std;
 int shugen(int number)
